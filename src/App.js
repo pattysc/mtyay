@@ -8,8 +8,8 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h2>Welcome to MTyAy</h2>
-          { this.props.children }
         </div>
+        { this.props.children }
       </div>
     );
   }

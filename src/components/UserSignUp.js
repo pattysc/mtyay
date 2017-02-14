@@ -22,7 +22,6 @@ class UserSignUp extends Component {
   render(){
     return(
       <div>
-        <div className="errors">{this.props.errors}</div>
         <form onSubmit={this.handleSubmit}>
           <input ref="email" placeholder="Enter Email" />
           <input type="password" ref="userPassword" placeholder="Enter Password" />
@@ -38,11 +37,5 @@ function mapDispatchToProps (dispatch) {
   return bindActionCreators({createUser}, dispatch)
 }
 
-function mapStateToProps(state){
 
-  return {
-    errors: state.errors
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserSignUp)
+export default connect(null, mapDispatchToProps)(UserSignUp)
