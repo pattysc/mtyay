@@ -7,8 +7,11 @@ import { Router, browserHistory } from 'react-router'
 import reduxPromise from 'redux-promise'
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './reducers'
+import thunk from 'redux-thunk'
 
-const store = createStore(rootReducer, applyMiddleware(reduxPromise))
+const store = createStore(rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(reduxPromise, thunk))
 
 
 ReactDOM.render(
