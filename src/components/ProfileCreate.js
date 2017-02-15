@@ -12,10 +12,16 @@ class ProfileCreate extends Component {
   handleSubmit(event){
     event.preventDefault()
     const profile = {
-      // fill this in with the refs from the form below
-      // email: this.refs.email.value,
-      // password: this.refs.userPassword.value,
-      // password_confirmation: this.refs.passwordConfirmation.value
+      name: this.refs.name.value,
+      bio: this.refs.bio.value,
+      photo: this.refs.photo.value,
+      phone: this.refs.phone.value,
+      twitter: this.refs.twitter.value,
+      linkedin: this.refs.linkedin.value,
+      facebook: this.refs.facebook.value,
+      instagram: this.refs.instagram.value,
+      goodreads: this.refs.goodreads.value,
+      skype: this.refs.skype.value
     }
     this.props.createProfile(profile)
   }
