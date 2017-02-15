@@ -7,7 +7,7 @@ import ProfileShow  from './components/ProfileShow'
 import ProfileCreate  from './components/ProfileCreate'
 import CommuteCreate  from './components/CommuteCreate'
 import CommuteDashboard from './components/CommuteDashboard'
-// import CommuteShow  from './components/CommuteShow'
+import CommuteMatches  from './components/CommuteMatches'
 import CommuteApp  from './components/CommuteApp'
 
 export default (
@@ -22,7 +22,7 @@ export default (
     <Route path="commute" component={CommuteApp}>
       <IndexRoute component={CommuteDashboard}/>
       <Route path='new' component={CommuteCreate}/>
-
+      <Route path='matches' component={CommuteMatches}/>
       {/* <Route path=':id' component={CommuteShow}/> */}
     </Route>
   </Route>

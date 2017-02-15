@@ -30,7 +30,6 @@ export const createProfile = (profile) => {
     browserHistory.push(`/profile/${profileData.data.id}`)
     return profileData
   })
-
   return {
     type: 'CREATE_PROFILE',
     payload: response
@@ -38,15 +37,21 @@ export const createProfile = (profile) => {
 }
 
 export const fetchCommutes = () => {
- console.log('Before the Axios.get')
-
   const response = axios.get('/commutes').then(function(commuteData){
-    console.log('Fetching comments', commuteData)
     return commuteData.data
   })
-
   return {
     type: 'FETCH_COMMUTES',
+    payload: response
+  }
+}
+
+export const fetchMatches = () => {
+  const response = axios.get('/commutes/?matches=true').then(function(commuteData){
+    return commuteData.data
+  })
+  return{
+    type: 'FETCH_MATCHES',
     payload: response
   }
 }
