@@ -4,44 +4,24 @@ import { createUser } from '../actions/index'
 import { bindActionCreators } from 'redux'
 
 class ProfileShow extends Component {
-  constructor(){
-    super()
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleSubmit(event){
-    event.preventDefault()
-    const user = {
-      email: this.refs.email.value,
-      password: this.refs.userPassword.value,
-      password_confirmation: this.refs.passwordConfirmation.value
-    }
-    this.props.createUser(user)
-  }
-
+  debugger;
   render(){
+    console.log(this.props.profile);
     return(
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input ref="email" placeholder="Enter Email" />
-          <input type="password" ref="userPassword" placeholder="Enter Password" />
-          <input type="password" ref="passwordConfirmation" placeholder="Verify Password" />
-          <button type="submit">Submit</button>
-        </form>
+        <div>Name: <span>{this.props.profile.name}</span></div>
       </div>
     )
   }
 }
 
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators({createUser}, dispatch)
-}
+
 
 function mapStateToProps(state){
 
   return {
-    user: state.user
+    profile: state.profile
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileShow)
+export default connect(mapStateToProps)(ProfileShow)
