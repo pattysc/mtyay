@@ -5,10 +5,10 @@ class ProfileApp extends Component {
   render(){
     return(
       <div className="Profile">
-        This is YOUR profile.
+        This is *your* profile.
         { this.props.children }
       </div>
-       
+
     )
   }
 }
