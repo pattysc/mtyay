@@ -36,3 +36,17 @@ export const createProfile = (profile) => {
     payload: response
   }
 }
+
+export const fetchCommutes = () => {
+ console.log('Before the Axios.get')
+
+  const response = axios.get('/commutes').then(function(commuteData){
+    console.log('Fetching comments', commuteData)
+    return commuteData.data
+  })
+
+  return {
+    type: 'FETCH_COMMUTES',
+    payload: response
+  }
+}
