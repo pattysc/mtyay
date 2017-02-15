@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import axios from 'axios'
+import { browserHistory } from 'react-router'
+
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
 
 class CommuteCreate extends Component {
@@ -15,10 +17,18 @@ class CommuteCreate extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    let new_commute = {nickname: this.refs.nickname.value, origin_id: this.refs.origin_station.value, destination_id: this.refs.destination_station.value, time: this.refs.time.value}
-    axios.post(`http://localhost:3000/v1/commutes`, ).then(
-      (response) => { this.setState({stations: response.data}) }
-    )
+    let new_commute = {nickname: this.refs.nickname.value, 
+      origin_id: this.refs.origin_station.value, 
+      destination_id: this.refs.destination_station.value, 
+      time: this.refs.time.value}
+
+    axios.post(`http://localhost:3000/v1/commutes`, new_commute ).then(
+      (response) => {
+        // Add a "flash message" here that invites user to
+        // create another commute OR skip ahead to see matches :)
+        browserHistory.push('/commute')
+
+      })
   }
 
   lines(){
@@ -59,17 +69,17 @@ class CommuteCreate extends Component {
 
           <p> Origin Line </p>
           <select ref="line" onChange={this.fetchStations.bind(this)}>
-            {this.lines().map( (line) => {return <option value={line}>{line}</option>} )}
+            {this.lines().map( (line, i) => {return <option value={line} key={i}>{line}</option>} )}
           </select>
 
           <p> Origin Station </p>
           <select ref="origin_station">
-            {this.state.stations.map( (station) => {return <option value={station.id}>{station.name}</option>} )}
+            {this.state.stations.map( (station, i) => {return <option value={station.id} key={i}>{station.name} </option>} )}
           </select>
 
           <p> Destination Station </p>
           <select ref="destination_station">
-            {this.state.stations.map( (station) => {return <option value={station.id}>{station.name}</option>} )}
+            {this.state.stations.map( (station, i) => {return <option value={station.id} key={i}>{station.name}</option>} )}
           </select> <br/>
 
           <button type="submit">Submit</button>
