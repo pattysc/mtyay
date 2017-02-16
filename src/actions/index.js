@@ -7,6 +7,7 @@ axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
 export const createUser = (user) => {
   const response = axios.post('/signup', user).then(function(userData){
     sessionStorage.setItem('jwt', userData.data.jwt)
+    axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
     browserHistory.push('/profile/new')
     return userData
   })// .catch(function(error){
@@ -28,6 +29,7 @@ export const createUser = (user) => {
 export const setUser = (user) => {
   const response = axios.post('/login', user).then(function(userData){
     sessionStorage.setItem('jwt', userData.data.jwt)
+    axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
     browserHistory.push('/commute')
     return userData
   })
