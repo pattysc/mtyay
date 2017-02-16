@@ -9,7 +9,6 @@ import {fetchCommutes} from '../actions'
 class CommuteDashboard extends Component {
   componentDidMount(){
     this.props.fetchCommutes()
-    //THIS DOESNT WORK!!!!!!!!!!!!!!!!!!!!
   }
 
   addCommute(){
@@ -20,13 +19,18 @@ class CommuteDashboard extends Component {
     browserHistory.push('/commute/matches')
   }
 
+  // Find a match for one specific commute
+  findMatch(event){
+    browserHistory.push(`/commute/${event.target.value}`)
+  }
+
   render(){
     return(
       // {this.state.stations.map( (station, i) => {return <option value={station.id} key={i}>{station.name} </option>} )}
 
       <div>
         <button value="Add a commute" onClick={this.addCommute.bind(this)}>Add a Commute</button><br/>
-        <button value="Meet your matches" onClick={this.showMatches.bind(this)}>Show Matches</button><br/>
+        <button value="Meet your matches" onClick={this.showMatches.bind(this)}>Show All Matches</button><br/>
 
         <h1> Your Commutes </h1>
 
@@ -37,6 +41,7 @@ class CommuteDashboard extends Component {
             <p>Origin Station: {commute.origin.name}, {commute.origin.line} train <br/>
             Destination Station: {commute.destination.name}, {commute.origin.line} train<br/>
             Time: {commute.time}<br/></p>
+          <button value={commute.id} onClick={this.findMatch.bind(this)}>Find A Match</button>
             <hr/><br/>
           </div>
             )}

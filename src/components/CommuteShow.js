@@ -6,20 +6,26 @@ import { browserHistory } from 'react-router'
 import {fetchMatches} from '../actions'
 
 
-class CommuteMatches extends Component {
+class CommuteShow extends Component {
   componentDidMount(){
-    this.props.fetchMatches()
+    // fetch matches for an id
+    this.props.fetchCommuteMatches(this.props.params.id)
   }
 
   handleConnectClick(event){
-    console.log('Booo!', event);
+    debugger;
   }
 
   render(){
     console.log(this.props.matches);
     return(
       <div>
-        <h1> these are your matches </h1>
+        <div className="yourCommute">
+          <h2>This is your commute:</h2>
+          <p></p>
+        </div>
+
+        <h2> These are your matches </h2>
           {this.props.matches.map((match, i) => {
             return <div>
               <h3> Match name: {match.profile.name} </h3>
@@ -42,9 +48,10 @@ function mapDispatchToProps (dispatch) {
 }
 
 function mapStateToProps(state){
+  state.matches[0]
   return {
     matches: state.matches
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommuteMatches)
+export default connect(mapStateToProps, mapDispatchToProps)(CommuteShow)
