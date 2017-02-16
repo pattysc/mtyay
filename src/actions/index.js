@@ -7,6 +7,7 @@ axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
 export const createUser = (user) => {
   const response = axios.post('/signup', user).then(function(userData){
     sessionStorage.setItem('jwt', userData.data.jwt)
+    axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
     browserHistory.push('/profile/new')
     return userData
   })// .catch(function(error){
@@ -20,7 +21,20 @@ export const createUser = (user) => {
   // }
 
   return {
-    type: 'CREATE_USER',
+    type: 'SET_USER',
+    payload: response
+  }
+}
+
+export const setUser = (user) => {
+  const response = axios.post('/login', user).then(function(userData){
+    sessionStorage.setItem('jwt', userData.data.jwt)
+    axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
+    browserHistory.push('/commute')
+    return userData
+  })
+  return {
+    type: 'SET_USER',
     payload: response
   }
 }
@@ -30,7 +44,6 @@ export const createProfile = (profile) => {
     browserHistory.push(`/profile/${profileData.data.id}`)
     return profileData
   })
-
   return {
     type: 'CREATE_PROFILE',
     payload: response
@@ -38,15 +51,21 @@ export const createProfile = (profile) => {
 }
 
 export const fetchCommutes = () => {
- console.log('Before the Axios.get')
-
   const response = axios.get('/commutes').then(function(commuteData){
-    console.log('Fetching comments', commuteData)
     return commuteData.data
   })
-
   return {
     type: 'FETCH_COMMUTES',
+    payload: response
+  }
+}
+
+export const fetchMatches = () => {
+  const response = axios.get('/profiles/?matches=true').then(function(commuteData){
+    return commuteData.data
+  })
+  return{
+    type: 'FETCH_MATCHES',
     payload: response
   }
 }
