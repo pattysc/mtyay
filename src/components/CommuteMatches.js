@@ -3,16 +3,18 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import axios from 'axios'
 import { browserHistory } from 'react-router'
-import {fetchMatches} from '../actions'
+import {fetchMatches, fetchCommuteMatches} from '../actions'
 
 
 class CommuteMatches extends Component {
   componentDidMount(){
     this.props.fetchMatches()
+    this.props.fetchCommuteMatches(parseInt(this.props.params.id))
   }
 
   handleConnectClick(event){
-    console.log('Booo!', event);
+    // this is for initiating the Connect request
+    console.log(event)
   }
 
   render(){
@@ -21,7 +23,7 @@ class CommuteMatches extends Component {
       <div>
         <h1> these are your matches </h1>
           {this.props.matches.map((match, i) => {
-            return <div>
+            return ( <div>
               <h3> Match name: {match.profile.name} </h3>
                 <p> Bio: {match.profile.bio} </p>
                 Commute name: {match.nickname} <br/>
@@ -30,7 +32,7 @@ class CommuteMatches extends Component {
                 at {match.time} <br/>
                 They will get off at {match.destination.name} <br/>
               <button key={i} onClick={this.handleConnectClick.bind(this)} > Connect MTYAY </button> <hr/>
-            </div>
+            </div> )
           })}
      </div>
     )
@@ -38,10 +40,10 @@ class CommuteMatches extends Component {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({fetchMatches}, dispatch)
+  return bindActionCreators({fetchMatches, fetchCommuteMatches}, dispatch)
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state, ownProps){
   return {
     matches: state.matches
   }
