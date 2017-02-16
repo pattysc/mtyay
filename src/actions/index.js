@@ -20,7 +20,19 @@ export const createUser = (user) => {
   // }
 
   return {
-    type: 'CREATE_USER',
+    type: 'SET_USER',
+    payload: response
+  }
+}
+
+export const setUser = (user) => {
+  const response = axios.post('/login', user).then(function(userData){
+    sessionStorage.setItem('jwt', userData.data.jwt)
+    browserHistory.push('/commute')
+    return userData
+  })
+  return {
+    type: 'SET_USER',
     payload: response
   }
 }
@@ -47,7 +59,7 @@ export const fetchCommutes = () => {
 }
 
 export const fetchMatches = () => {
-  const response = axios.get('/commutes/?matches=true').then(function(commuteData){
+  const response = axios.get('/profiles/?matches=true').then(function(commuteData){
     return commuteData.data
   })
   return{

@@ -1,7 +1,9 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import App from './App'
+import MainPage  from './components/MainPage'
 import UserSignUp  from './components/UserSignUp'
+import UserLogIn  from './components/UserLogIn'
 import ProfileApp  from './components/ProfileApp'
 import ProfileShow  from './components/ProfileShow'
 import ProfileCreate  from './components/ProfileCreate'
@@ -12,7 +14,9 @@ import CommuteApp  from './components/CommuteApp'
 
 export default (
   <Route path="/" component={App}>
+    <IndexRoute component={MainPage} />
     <Route path="signup" component={UserSignUp} />
+    <Route path="login" component={UserLogIn} />
 
     <Route path="profile" component={ProfileApp}>
       <Route path='new' component={ProfileCreate}/>

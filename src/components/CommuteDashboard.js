@@ -29,12 +29,13 @@ class CommuteDashboard extends Component {
         <button value="Meet your matches" onClick={this.showMatches.bind(this)}>Show Matches</button><br/>
 
         <h1> Your Commutes </h1>
+
         {this.props.commutes.map( (commute, i) => {
           return (
           <div>
           <h3>Nickname:{commute.nickname}</h3>
-            <p>Origin Station: {commute.origin_id}<br/>
-            Destination Station: {commute.destination_id}<br/>
+            <p>Origin Station: {commute.origin.name}, {commute.origin.line} train <br/>
+            Destination Station: {commute.destination.name}, {commute.origin.line} train<br/>
             Time: {commute.time}<br/></p>
             <hr/><br/>
           </div>

@@ -14,7 +14,16 @@ class CommuteMatches extends Component {
   render(){
     console.log(this.props.matches);
     return(
-      <div> these are your matches </div>
+      <div>
+        <h1> these are your matches </h1>
+          {this.props.matches.map((match) => {
+            return <div> <h3> Match name: {match.profile.name} </h3>  <p> Bio: {match.profile.bio} </p>
+                        Commute name: {match.nickname} <br/> at station {match.origin.name} <br/> on line {match.origin.line} <br/> at {match.time} <br/>
+                        They will get off at {match.destination.name} <br/>
+                        <button> Connect MTYAY </button> <hr/>
+            </div>
+          })}
+     </div>
     )
   }
 }
