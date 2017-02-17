@@ -14,7 +14,7 @@ class ProfileShow extends Component {
   render(){
     let profile = this.props.profile
     let keys = Object.keys(profile).map((profile_key) => {
-      if (profile[profile_key]){
+      if (profile[profile_key] && profile_key !== 'id'){
         return <p>{_.capitalize(profile_key)}: {profile[profile_key]}</p>
       }
     })
