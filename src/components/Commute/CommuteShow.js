@@ -1,21 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import axios from 'axios'
-import { browserHistory } from 'react-router'
-import {fetchMatches, fetchCommuteMatches, fetchCommutes, setCurrentCommute} from '../../actions'
+import {fetchMatches, fetchCommuteMatches,
+        createConnection, fetchCommutes, setCurrentCommute} from '../../actions'
 
-
+// Route -> commute/:id
 class CommuteShow extends Component {
 
   componentDidMount(){
     this.props.fetchCommutes()
+    console.log(this.props);
     this.props.fetchCommuteMatches(this.props.params.id)
 
   }
 
-  handleConnectClick(event){
-    debugger;
+  handleConnectClick(match_commute_id){
+    let requester_commute_id = parseInt(this.props.params.id, 10)
+    let requestee_commute_id = match_commute_id
+    // requested_at = Time.now
+    // invite_note later
+    this.props.createConnection({ requester_commute_id, requestee_commute_id })
   }
 
   render(){
@@ -25,6 +29,8 @@ class CommuteShow extends Component {
       return(
         <div> Loading... ...! </div>
         )
+    } else if (this.props.matches.length === 0){
+      return (<div>You have no matches :( </div>)
     } else {
       return(
 
@@ -40,6 +46,7 @@ class CommuteShow extends Component {
         </div>
 
         <h2> These are its matches: </h2>
+
           {this.props.matches.map((match, i) => {
             return <div>
               <h3> Match name: {match.profile.name} </h3>
@@ -49,7 +56,7 @@ class CommuteShow extends Component {
                 on line {match.origin.line} <br/>
                 at {match.time} <br/>
                 They will get off at {match.destination.name} <br/>
-              <button key={i} onClick={this.handleConnectClick.bind(this)} > Connect MTYAY </button> <hr/>
+              <button key={i} onClick={this.handleConnectClick.bind(this, match.id)} > Connect MTYAY </button> <hr/>
             </div>
           })}
      </div>
@@ -60,11 +67,12 @@ class CommuteShow extends Component {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({fetchMatches, fetchCommuteMatches, fetchCommutes, setCurrentCommute}, dispatch)
+  return bindActionCreators({fetchMatches, fetchCommuteMatches,
+    createConnection, fetchCommutes, setCurrentCommute}, dispatch)
 }
 
 function mapStateToProps(state, ownProps){
-  const id = parseInt(ownProps.params.id)
+  const id = parseInt(ownProps.params.id, 10)
   console.log('hit map state to props')
   let foundCommute = {}
   if (state.commutes.length > 0) {

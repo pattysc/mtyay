@@ -20,7 +20,7 @@ class ProfileShow extends Component {
     })
     return(
       <div >
-        <h3>Welcome, {profile.name}</h3>
+        <h3>Welcome, {this.props.profile.name}</h3>
         {keys}
         <Link to={'/commute/new'}><button>Add a Commute</button></Link><br/>
         <Link to={'/commute/matches'}><button>Show Matches</button></Link><br/>
