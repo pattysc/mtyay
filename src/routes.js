@@ -30,7 +30,7 @@ export default (
     <Route path="login" component={UserLogIn} />
 
       <Route path="profile" component={ProfileApp}>
-        <Route path='new' component={ProfileCreate}/>
+        <Route path='new' component={ProfileCreate} onEnter={requireAuth}/>
         <Route path=':id' component={ProfileShow} onEnter={requireAuth}/>
       </Route>
 
