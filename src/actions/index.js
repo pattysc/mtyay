@@ -71,11 +71,22 @@ export const fetchCommutes = () => {
 }
 
 export const fetchMatches = () => {
-  const response = axios.get('/profiles/?matches=true').then(function(commuteData){
+  const response = axios.get('/matches').then(function(commuteData){
     return commuteData.data
   })
   return{
     type: 'FETCH_MATCHES',
+    payload: response
+  }
+}
+
+export const fetchCommuteMatches = (id) => {
+  console.log('hitting fetchCommuteMatches action')
+  const response = axios.get(`/matches/?id=${id}`).then(function(commuteData){
+    return commuteData.data
+  })
+  return{
+    type: 'FETCH_COMMUTE_MATCHES',
     payload: response
   }
 }
