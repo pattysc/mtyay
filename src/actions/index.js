@@ -71,6 +71,7 @@ export const fetchMatches = () => {
 }
 
 export const fetchCommuteMatches = (id) => {
+  console.log('hitting fetchCommuteMatches action')
   const response = axios.get(`/matches/?id=${id}`).then(function(commuteData){
     return commuteData.data
   })

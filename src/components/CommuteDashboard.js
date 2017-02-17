@@ -3,9 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import axios from 'axios'
 import { browserHistory } from 'react-router'
-import {fetchCommutes} from '../actions'
-import {fetchCommuteMatches} from '../actions'
-
+import {fetchCommutes, fetchCommuteMatches} from '../actions'
 
 class CommuteDashboard extends Component {
   componentDidMount(){
