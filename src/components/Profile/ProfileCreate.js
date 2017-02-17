@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createProfile } from '../actions/index'
+import { createProfile } from '../../actions/index'
 import { bindActionCreators } from 'redux'
 
 class ProfileCreate extends Component {

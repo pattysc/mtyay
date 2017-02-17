@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import axios from 'axios'
-import { browserHistory } from 'react-router'
-import {fetchMatches} from '../actions'
+// import axios from 'axios'
+// import { browserHistory } from 'react-router'
+import {fetchMatches} from '../../actions'
 
 
 class CommuteShow extends Component {
@@ -48,7 +48,6 @@ function mapDispatchToProps (dispatch) {
 }
 
 function mapStateToProps(state){
-  state.matches[0]
   return {
     matches: state.matches
   }

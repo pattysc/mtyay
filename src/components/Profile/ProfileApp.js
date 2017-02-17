@@ -11,11 +11,9 @@ class ProfileApp extends Component {
   render(){
     return(
       <div className="Profile">
-        <button value="Log Out" onClick={this.handleLogOut.bind(this)}>Log Out</button><br/>
-        This is *your* profile.
+        <button onClick={this.handleLogOut.bind(this)}>Log Out</button><br/>
         { this.props.children }
       </div>
-
     )
   }
 }

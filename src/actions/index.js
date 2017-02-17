@@ -42,10 +42,20 @@ export const setUser = (user) => {
 export const createProfile = (profile) => {
   const response = axios.post('/profiles', profile).then(function(profileData){
     browserHistory.push(`/profile/${profileData.data.id}`)
-    return profileData
+    return profileData.data
   })
   return {
     type: 'CREATE_PROFILE',
+    payload: response
+  }
+}
+
+export const fetchProfile = (profile_id) => {
+  const response = axios.get(`/profiles/${profile_id}`).then((profileData) => {
+    return profileData.data
+  })
+  return {
+    type: 'FETCH_PROFILE',
     payload: response
   }
 }

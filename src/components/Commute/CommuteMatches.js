@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import axios from 'axios'
 import { browserHistory } from 'react-router'
-import {fetchMatches} from '../actions'
+import {fetchMatches} from '../../actions'
 
 
 class CommuteMatches extends Component {
