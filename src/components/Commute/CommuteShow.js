@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import axios from 'axios'
 import { browserHistory } from 'react-router'
-import {fetchMatches, fetchCommuteMatches, fetchCommutes, setCurrentCommute} from '../actions'
+import {fetchMatches, fetchCommuteMatches, fetchCommutes, setCurrentCommute} from '../../actions'
 
 
 class CommuteShow extends Component {
-  
+
   componentDidMount(){
     this.props.fetchCommutes()
     this.props.fetchCommuteMatches(this.props.params.id)
@@ -55,7 +55,7 @@ class CommuteShow extends Component {
      </div>
     )
     }
-    
+
   }
 }
 
