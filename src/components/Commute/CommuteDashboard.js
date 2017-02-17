@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import axios from 'axios'
 import { browserHistory } from 'react-router'
 import {fetchCommutes, fetchCommuteMatches} from '../../actions'
 
@@ -29,7 +28,7 @@ class CommuteDashboard extends Component {
 
       <div>
         <button value="Add a commute" onClick={this.addCommute.bind(this)}>Add a Commute</button><br/>
-        <button value="Meet your matches" onClick={this.showMatches.bind(this)}>Show All Matches</button><br/>
+        {/* <button value="Meet your matches" onClick={this.showMatches.bind(this)}>Show All Matches</button><br/> */}
 
         <h1> Your Commutes </h1>
 

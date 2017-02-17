@@ -4,13 +4,15 @@ import errorsReducer from './errorsReducer'
 import profilesReducer from './profilesReducer'
 import commuteReducer from './commutesReducer'
 import matchesReducer from './matchesReducer'
-import currentCommuteReducer from './currentCommuteReducer'
+import connectionsReducer from './connectionsReducer'
+// import currentCommuteReducer from './currentCommuteReducer'
 
 const rootReducer = combineReducers({
   user: usersReducer,
   errors: errorsReducer,
   profile: profilesReducer,
   commutes: commuteReducer,
-  matches: matchesReducer
+  matches: matchesReducer,
+  connections: connectionsReducer
 })
 export default rootReducer

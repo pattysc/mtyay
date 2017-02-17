@@ -1,6 +1,6 @@
-export default function commutesReducer(state=[], action){
+export default function connectionsReducer(state={}, action){
   switch (action.type) {
-    case 'FETCH_COMMUTES':
+    case 'CREATE_COMMUTE':
       return action.payload
     default:
       return state

@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import axios from 'axios'
-import { browserHistory } from 'react-router'
 import {fetchMatches, fetchCommuteMatches} from '../../actions'
 
-
+// Route -> commute/matches
 class CommuteMatches extends Component {
   componentDidMount(){
     this.props.fetchMatches()
-    this.props.fetchCommuteMatches(parseInt(this.props.params.id))
+    this.props.fetchCommuteMatches(parseInt(this.props.params.id, 10))
   }
 
   handleConnectClick(event){
     // this is for initiating the Connect request
+    // Create a new action and object
     console.log(event)
   }
 
