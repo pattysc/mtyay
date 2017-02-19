@@ -80,8 +80,7 @@ export const fetchMatches = () => {
     if (commuteData.data.length > 0) {
       commuteData.data.forEach( (resp) => {
         resp.button = resp.button || {}
-        resp.clicked = false
-        resp.button['disabled'] = false
+        resp.button['clicked'] = false
         resp.button['text'] = 'Invite to Connect'
       })
     }
@@ -111,11 +110,6 @@ export const fetchCommuteMatches = (id) => {
   }
 }
 export const toggleMatchButton = (clicked_commute) => {
-    // console.log('the clicked commute')
-    // console.log(clicked_commute)
-    // clicked_commute.clicked = true
-    // clicked_commute.button.text = 'Invite Sent'
-    // clicked_commute.button.disabled = 'disabled'
 
     return {
       type: 'CLICKED_MATCH_BUTTON',

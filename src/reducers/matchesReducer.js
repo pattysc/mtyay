@@ -10,10 +10,10 @@ export default function matchesReducer(state=[], action){
         if (index === i) {
           // Copy the object before mutating
           return Object.assign({}, match, {
-            clicked: true,
+            // clicked: true, text: 'Invite Sent!'
             button: {
               text: 'Invite Sent!',
-              disabled: 'disabled'
+              clicked: true
             }
           })
         }

@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {fetchCommutes, fetchMatches, fetchCommuteMatches,
   createConnection, toggleMatchButton} from '../../actions'
+import MatchConnectButton from './MatchConnectButton'
+import MatchInfoTile from './MatchInfoTile'
+
+
 
 // Route -> commute/matches
 class CommuteMatches extends Component {
@@ -37,34 +41,51 @@ class CommuteMatches extends Component {
 
   render(){
 
-    if (this.props.matches.length > 0) {
-      console.log(this.props.matches[0].text)
-    }
-
     return(
       <div>
         <h1> All Your Matches </h1>
           {this.props.matches.map((match, i) => {
-            let clicked = match.clicked
-            return ( <div key={`div-${i}`}>
-              <h3 key={`h3-${i}`}> Match name: {match.profile.name} </h3>
-                <p key={`p-${i}`}> Bio: {match.profile.bio}<br/>
-                Commute name: {match.nickname} <br/>
-                on line {match.origin.line} at station {match.origin.name} <br/>
-                leaving around {match.time} <br/>
-                They get off at {match.destination.name} </p>
+          console.log(match)
+          if (!match.button.clicked){
+            return (
+            <div key={`div--fullMatchTile-${i}`}>
+              < MatchInfoTile commute={match} index={i} />
+              < MatchConnectButton commute={match} handleConnectClick={this.handleConnectClick.bind(this, match.id)} index={i} disabled={false} />
+            </div>
+            )
+          } else {
+            debugger
+            return (
+              <div key={`div--fullMatchTile-${i}`}>
+                < MatchInfoTile commute={match} index={i} />
+                < MatchConnectButton commute={match} handleConnectClick={this.handleConnectClick.bind(this, match.id)} index={i} disabled={true} />
+              </div>
+            )
+          }
 
-                <div>
-                  <button key={`i`}
-                  onClick={this.handleConnectClick.bind(this, match.id)}> {match.button.text} </button>
-                </div>
-              <hr/>
-            </div> )
-          })}
-     </div>
+        })}
+      </div>
     )
   }
 }
+    // Old, non-compartmentalized render
+            // let clicked = match.clicked
+            // return ( <div key={`div-${i}`}>
+            //   <h3 key={`h3-${i}`}> Match name: {match.profile.name} </h3>
+            //     <p key={`p-${i}`}> Bio: {match.profile.bio}<br/>
+            //     Commute name: {match.nickname} <br/>
+            //     on line {match.origin.line} at station {match.origin.name} <br/>
+            //     leaving around {match.time} <br/>
+            //     They get off at {match.destination.name} </p>
+            //
+            //     <div>
+            //       <button style={buttonStyle(match.button.disabled)} key={`i`}
+            //       onClick={this.handleConnectClick.bind(this, match.id)}> {match.button.text} </button>
+            //     </div>
+            //   <hr/>
+            // </div> )
+
+
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({fetchMatches, fetchCommuteMatches, fetchCommutes,
