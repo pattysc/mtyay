@@ -76,8 +76,6 @@ function mapStateToProps(state, ownProps){
   console.log('hit map state to props')
   let foundCommute = {}
   if (state.commutes.length > 0) {
-      console.log('in the if on line 62')
-      console.log(state.commutes)
       foundCommute = state.commutes.find( (commute) => { return commute.id === id })
   }
   return {

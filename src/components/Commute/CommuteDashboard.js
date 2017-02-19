@@ -27,8 +27,8 @@ class CommuteDashboard extends Component {
       // {this.state.stations.map( (station, i) => {return <option value={station.id} key={i}>{station.name} </option>} )}
 
       <div>
-        <button value="Add a commute" onClick={this.addCommute.bind(this)}>Add a Commute</button><br/>
-        {/* <button value="Meet your matches" onClick={this.showMatches.bind(this)}>Show All Matches</button><br/> */}
+        <br/><button onClick={this.addCommute.bind(this)}>Add a Commute</button><br/><br/>
+        <button  onClick={this.showMatches.bind(this)}>Show All Matches</button><br/>
 
         <h1> Your Commutes </h1>
 
