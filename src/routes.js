@@ -12,16 +12,14 @@ import CommuteDashboard from './components/Commute/CommuteDashboard'
 import CommuteMatches  from './components/Commute/CommuteMatches'
 import CommuteApp  from './components/Commute/CommuteApp'
 import CommuteShow  from './components/Commute/CommuteShow'
+import ConnectionsRequests from './components/Connections/ConnectionsRequests'
+import ConnectionsIndex from './components/Connections/ConnectionsIndex'
 
 const requireAuth = (nextState, replace) => {
   if (!sessionStorage.jwt){
     replace('/')
   }
 }
-// }
-// function requireAuth(nextState, replaceState) {
-//   if (!auth.loggedIn())
-//   replaceState({ nextPathname: nextState.location.pathname }, '/login')
 
 export default (
   <Route path="/" component={App}>
@@ -29,7 +27,7 @@ export default (
     <Route path="signup" component={UserSignUp} />
     <Route path="login" component={UserLogIn} />
 
-      <Route path="profile" component={ProfileApp}>
+      <Route path="profile" component={ProfileApp}> {/* we can refactor and put require auth here instead of twice below but i feel bad making you guys pull AGAIN */}
         <Route path='new' component={ProfileCreate} onEnter={requireAuth}/>
         <Route path=':id' component={ProfileShow} onEnter={requireAuth}/>
       </Route>
@@ -40,5 +38,9 @@ export default (
       <Route path='matches' component={CommuteMatches}/>
       <Route path=':id' component={CommuteShow}/>
     </Route>
+
+    <Route path="connections/requests" component={ConnectionsRequests} onEnter={requireAuth}/>
+    <Route path="connections" component={ConnectionsIndex} onEnter={requireAuth}/>
+
   </Route>
 )

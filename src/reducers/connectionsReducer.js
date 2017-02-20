@@ -1,6 +1,7 @@
-export default function connectionsReducer(state={}, action){
+export default function connectionsReducer(state=[], action){
   switch (action.type) {
-    case 'CREATE_COMMUTE':
+    case 'FETCH_CONNECTIONS':
+      console.log('reducer');
       return action.payload
     default:
       return state
