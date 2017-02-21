@@ -20,7 +20,15 @@ class App extends Component {
   render() {
     let buttons = ''
     if (this.loggedIn()){
-      buttons = <div><NavItem ><Link onClick={this.handleLogOut.bind(this)}>Log Out</Link></NavItem></div>
+      buttons =
+      <div>
+        <NavItem ><Link onClick={this.handleLogOut.bind(this)}>Log Out</Link></NavItem>
+        <NavItem ><Link to={`/profile/${sessionStorage.id}`}>My Profile</Link></NavItem>
+        <NavItem ><Link to={`/commute`}>My Commutes</Link></NavItem>
+        <NavItem ><Link to={`/commute/new`}>Add Commutes</Link></NavItem>
+        <NavItem ><Link to={`/connections`}>My Connections</Link></NavItem>
+        <NavItem ><Link to={`/connections/requests`}>My Requests</Link></NavItem>
+      </div>
     } else {
       buttons = (<div><NavItem ><Link to={`/login`}>Log In</Link></NavItem>
       <NavItem ><Button><Link to={'/signup'}>Sign Up</Link></Button></NavItem></div>)

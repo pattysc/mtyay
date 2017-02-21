@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { fetchProfile } from '../../actions'
 import _ from 'lodash'
+import { Card, CardTitle } from 'react-materialize'
 
 class ProfileShow extends Component {
   constructor(props){
@@ -25,6 +26,11 @@ class ProfileShow extends Component {
     console.log(keys);
     return(
       <div >
+        {/* <Card className='medium'
+        header={<CardTitle >{this.props.profile.name}</CardTitle>}
+        actions={[<a href='#'>This is a Link</a>]}>
+        I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
+        </Card> */}
         <h3>Welcome, {this.props.profile.name}</h3>
         {keys}
         <Link to={'/commute/new'}><button>Add a Commute</button></Link><br/>
