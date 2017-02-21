@@ -84,6 +84,8 @@ export const fetchMatches = () => {
         resp.button['text'] = 'Invite to Connect'
       })
     }
+    console.log('fetchMatches (ALL)')
+    console.log(commuteData.data)
     return commuteData.data
   })
 
@@ -102,6 +104,15 @@ export const fetchCommuteMatches = (id) => {
     }
   }
   const response = axios.get(`/matches/?id=${id}`).then(function(commuteData){
+    if (commuteData.data.length > 0) {
+      commuteData.data.forEach( (resp) => {
+        resp.button = resp.button || {}
+        resp.button['clicked'] = false
+        resp.button['text'] = 'Invite to Connect'
+      })
+    }
+    console.log('fetchCommuteMatches')
+    console.log(commuteData.data)
     return commuteData.data
   })
   return{

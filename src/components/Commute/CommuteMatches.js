@@ -16,8 +16,7 @@ class CommuteMatches extends Component {
   }
 
   handleConnectClick(match_commute_id){
-    // First, find the matching commute object that corresponds to the
-    // button clicked
+    // First, find the matching commute object that corresponds to the button clicked
     let selectedMatchingCommute = this.props.matches.find( (match) => {
       return match.id === match_commute_id
     })
@@ -45,7 +44,6 @@ class CommuteMatches extends Component {
       <div>
         <h1> All Your Matches </h1>
           {this.props.matches.map((match, i) => {
-          console.log(match)
           if (!match.button.clicked){
             return (
             <div key={`div--fullMatchTile-${i}`}>
@@ -54,7 +52,6 @@ class CommuteMatches extends Component {
             </div>
             )
           } else {
-            debugger
             return (
               <div key={`div--fullMatchTile-${i}`}>
                 < MatchInfoTile commute={match} index={i} />
