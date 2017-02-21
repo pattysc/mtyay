@@ -6,6 +6,7 @@ import commuteReducer from './commutesReducer'
 import matchesReducer from './matchesReducer'
 import connectionsReducer from './connectionsReducer'
 import requestsReducer from './requestsReducer'
+import pictureReducer from './pictureReducer'
 // import currentCommuteReducer from './currentCommuteReducer'
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   commutes: commuteReducer,
   matches: matchesReducer,
   requests: requestsReducer,
-  connections: connectionsReducer
+  connections: connectionsReducer,
+  userPicture: pictureReducer
 })
 export default rootReducer

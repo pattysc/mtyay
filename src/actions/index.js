@@ -23,7 +23,7 @@ export const setUser = (user) => {
     sessionStorage.setItem('id', userData.data.id)
     axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
     browserHistory.push(`/profile/${userData.data.id}`)
-    return userData
+    return userData.data
   })
   return {
     type: 'SET_USER',
@@ -119,5 +119,14 @@ export const fetchConnections = () => {
   return{
     type: 'FETCH_CONNECTIONS',
     payload: response
+  }
+}
+
+export const uploadPicture = (URL, id) => {
+  console.log('here');
+  const response = axios.patch(`/profiles/${id}`, {picture: URL})
+  return{
+    type: 'UPLOAD_PICTURE',
+    payload: URL
   }
 }

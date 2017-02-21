@@ -7,6 +7,7 @@ import UserLogIn  from './components/UserLogIn'
 import ProfileApp  from './components/Profile/ProfileApp'
 import ProfileShow  from './components/Profile/ProfileShow'
 import ProfileCreate  from './components/Profile/ProfileCreate'
+import ProfilePicture  from './components/Profile/ProfilePicture'
 import CommuteCreate  from './components/Commute/CommuteCreate'
 import CommuteDashboard from './components/Commute/CommuteDashboard'
 import CommuteMatches  from './components/Commute/CommuteMatches'
@@ -14,6 +15,7 @@ import CommuteApp  from './components/Commute/CommuteApp'
 import CommuteShow  from './components/Commute/CommuteShow'
 import ConnectionsRequests from './components/Connections/ConnectionsRequests'
 import ConnectionsIndex from './components/Connections/ConnectionsIndex'
+import ConnectionsApp from './components/Connections/ConnectionsApp'
 
 const requireAuth = (nextState, replace) => {
   if (!sessionStorage.jwt){
@@ -29,6 +31,7 @@ export default (
 
       <Route path="profile" component={ProfileApp}> {/* we can refactor and put require auth here instead of twice below but i feel bad making you guys pull AGAIN */}
         <Route path='new' component={ProfileCreate} onEnter={requireAuth}/>
+        <Route path='picture' component={ProfilePicture} onEnter={requireAuth}/>
         <Route path=':id' component={ProfileShow} onEnter={requireAuth}/>
       </Route>
 
@@ -39,8 +42,10 @@ export default (
       <Route path=':id' component={CommuteShow}/>
     </Route>
 
-    <Route path="connections/requests" component={ConnectionsRequests} onEnter={requireAuth}/>
-    <Route path="connections" component={ConnectionsIndex} onEnter={requireAuth}/>
+    <Route path="connections" component={ConnectionsApp} onEnter={requireAuth}>
+      <IndexRoute component={ConnectionsIndex}/>
+      <Route path="requests" component={ConnectionsRequests} onEnter={requireAuth}/>
+    </Route>
 
   </Route>
 )
