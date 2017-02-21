@@ -44,13 +44,13 @@ class ConnectionsRequests extends Component {
     console.log(this.props.requests);
     let requesters;
     let requestees;
-    requesters = this.props.requests.map( (conn) => {
+    requesters = this.props.requests.map( (conn, i) => {
       if(parseInt(sessionStorage.id) === conn.requestee_commute.profile.id){
         return ( <div>
                   <p> Request from: {conn.requester_commute.profile.name} <br/>
                       "{conn.invite_note}"
                   </p>
-                  <OptionButtons conn={conn} invitationAccepted={this.state.invitationAccepted} invitationDeclined={this.state.invitationDeclined} acceptInvitation={this.acceptInvitation.bind(this, conn.id)} declineInvitation={this.declineInvitation.bind(this, conn.id)}/>
+                  <OptionButtons id={i} conn={conn} invitationAccepted={this.state.invitationAccepted} invitationDeclined={this.state.invitationDeclined} acceptInvitation={this.acceptInvitation.bind(this, conn.id)} declineInvitation={this.declineInvitation.bind(this, conn.id)}/>
                   <hr/>
                 </div>
               )
