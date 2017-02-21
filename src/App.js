@@ -27,9 +27,11 @@ class App extends Component {
     }
     return (
       <div className="App">
-          <Navbar brand='MetroMeet' right>
+        <div className="nav-wrapper">
+          <Navbar brand={<img className="responsive-img" id="logo" src="/transparent_wide_edit.png"/>} right>
             {buttons}
           </Navbar>
+        </div>
           <div className="container">
             { this.props.children }
           </div>
