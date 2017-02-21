@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router'
 import './App.css';
-import { Navbar, NavItem, Button } from 'react-materialize';
+import { Navbar, NavItem, Button, Footer } from 'react-materialize';
 
 
 
@@ -35,6 +35,8 @@ class App extends Component {
           <div className="container">
             { this.props.children }
           </div>
+          <Footer copyrights="&copy; 2017 MetroMeetups">
+          </Footer>
       </div>
     );
   }
