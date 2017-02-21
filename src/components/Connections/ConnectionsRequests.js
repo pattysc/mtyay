@@ -63,7 +63,7 @@ class ConnectionsRequests extends Component {
             <p> Request to: {conn.requestee_commute.profile.name} <br/>
                       "{conn.invite_note}"
             </p>
-            <Link to={`profile/${conn.requestee_commute.profile.id}`}><button> Checkout {conn.requestee_commute.profile.name}'s profile! </button></Link>
+            <Link to={`/profile/${conn.requestee_commute.profile.id}`}><button> Checkout {conn.requestee_commute.profile.name}'s profile! </button></Link>
             <hr/>
           </div>
               )

@@ -7,6 +7,7 @@ axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
 export const createUser = (user) => {
   const response = axios.post('/signup', user).then(function(userData){
     sessionStorage.setItem('jwt', userData.data.jwt)
+    sessionStorage.setItem('id', userData.data.id)
     axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
     browserHistory.push('/profile/new')
     return userData
