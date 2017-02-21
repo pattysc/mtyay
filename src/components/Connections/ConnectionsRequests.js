@@ -10,35 +10,35 @@ class ConnectionsRequests extends Component {
 
   constructor(){
     super()
-    this.state = {
-      invitationAccepted: false,
-      invitationDeclined: false
-    }
+    // this.state = {
+    //   invitationAccepted: false,
+    //   invitationDeclined: false
+    // }
   }
 
   componentDidMount(){
     this.props.fetchRequests()
   }
 
-  acceptInvitation(conn_id){
-    let params
-    params = { id: conn_id, accepted: true}
-    axios.patch(`/connections/${conn_id}`, params)
-    this.setState({
-      invitationAccepted: true,
-      invitationDeclined: false
-    })
-  }
-
-  declineInvitation(conn_id){
-    let params
-    params = { id: conn_id, denied: true}
-    axios.patch(`/connections/${conn_id}`, params)
-    this.setState({
-      invitationAccepted: false,
-      invitationDeclined: true
-    })
-  }
+  // acceptInvitation(conn_id){
+  //   let params
+  //   params = { id: conn_id, accepted: true}
+  //   axios.patch(`/connections/${conn_id}`, params)
+  //   this.setState({
+  //     invitationAccepted: true,
+  //     invitationDeclined: false
+  //   })
+  // }
+  //
+  // declineInvitation(conn_id){
+  //   let params
+  //   params = { id: conn_id, denied: true}
+  //   axios.patch(`/connections/${conn_id}`, params)
+  //   this.setState({
+  //     invitationAccepted: false,
+  //     invitationDeclined: true
+  //   })
+  // }
 
   render(){
     console.log(this.props.requests);
@@ -50,7 +50,8 @@ class ConnectionsRequests extends Component {
                   <p> Request from: {conn.requester_commute.profile.name} <br/>
                       Message: "{conn.invite_note}"
                   </p>
-                  <OptionButtons id={i} conn={conn} invitationAccepted={this.state.invitationAccepted} invitationDeclined={this.state.invitationDeclined} acceptInvitation={this.acceptInvitation.bind(this, conn.id)} declineInvitation={this.declineInvitation.bind(this, conn.id)}/>
+                  {/* <OptionButtons id={i} conn={conn} invitationAccepted={this.state.invitationAccepted} invitationDeclined={this.state.invitationDeclined} acceptInvitation={this.acceptInvitation.bind(this, conn.id)} declineInvitation={this.declineInvitation.bind(this, conn.id)}/> */}
+                  <OptionButtons conn_id={conn.id} conn={conn} />
                   <hr/>
                 </div>
               )
@@ -63,7 +64,7 @@ class ConnectionsRequests extends Component {
             <p> Request to: {conn.requestee_commute.profile.name} <br/>
                       Message: "{conn.invite_note}"
             </p>
-            <Link to={`profile/${conn.requestee_commute.profile.id}`}><button> Checkout {conn.requestee_commute.profile.name}'s profile! </button></Link>
+            <Link to={`/profile/${conn.requestee_commute.profile.id}`}><button> Checkout {conn.requestee_commute.profile.name}'s profile! </button></Link>
             <hr/>
           </div>
               )

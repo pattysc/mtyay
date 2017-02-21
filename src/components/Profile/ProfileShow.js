@@ -15,9 +15,14 @@ class ProfileShow extends Component {
     let profile = this.props.profile
     let keys = Object.keys(profile).map((profile_key) => {
       if (profile[profile_key] && profile_key !== 'id'){
-        return <p>{_.capitalize(profile_key)}: {profile[profile_key]}</p>
+        if (profile_key == 'commutes') {
+          return <Link to={`/commute`}><button>Show Commutes</button><br/></Link>
+        } else {
+          return <p>{_.capitalize(profile_key)}: {profile[profile_key]}</p>
+        }
       }
-    })
+    }).filter(element => element != undefined)
+    console.log(keys);
     return(
       <div >
         <h3>Welcome, {this.props.profile.name}</h3>
