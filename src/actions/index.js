@@ -10,16 +10,7 @@ export const createUser = (user) => {
     axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
     browserHistory.push('/profile/new')
     return userData
-  })// .catch(function(error){
-  //   return {
-  //     type: 'CREATE_ERROR',
-  //     payload: error.response.data.errors
-  //   }
-  // })
-  // if (response) {
-  //
-  // }
-
+  })
   return {
     type: 'SET_USER',
     payload: response
@@ -29,9 +20,10 @@ export const createUser = (user) => {
 export const setUser = (user) => {
   const response = axios.post('/login', user).then(function(userData){
     sessionStorage.setItem('jwt', userData.data.jwt)
+    sessionStorage.setItem('id', userData.data.id)
     axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
-    browserHistory.push('/commute')
-    return userData
+    browserHistory.push(`/profile/${userData.data.id}`)
+    return userData.data
   })
   return {
     type: 'SET_USER',
@@ -107,4 +99,34 @@ export const createConnection = (connection) => {
       type: 'CREATE_CONNECTION',
       payload: response
     }
+}
+
+export const fetchRequests = () => {
+  const response = axios.get(`/requests`).then((connections) =>{
+    return connections.data
+  })
+  return{
+    type: 'FETCH_REQUESTS',
+    payload: response
+  }
+}
+
+export const fetchConnections = () => {
+  const response = axios.get(`/connections`).then((connections) =>{
+    console.log('action')
+    return connections.data
+  })
+  return{
+    type: 'FETCH_CONNECTIONS',
+    payload: response
+  }
+}
+
+export const uploadPicture = (URL, id) => {
+  console.log('here');
+  const response = axios.patch(`/profiles/${id}`, {picture: URL})
+  return{
+    type: 'UPLOAD_PICTURE',
+    payload: URL
+  }
 }

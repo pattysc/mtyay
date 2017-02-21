@@ -17,9 +17,9 @@ class CommuteCreate extends Component {
 
   handleSubmit(event){
     event.preventDefault()
-    let new_commute = {nickname: this.refs.nickname.value, 
-      origin_id: this.refs.origin_station.value, 
-      destination_id: this.refs.destination_station.value, 
+    let new_commute = {nickname: this.refs.nickname.value,
+      origin_id: this.refs.origin_station.value,
+      destination_id: this.refs.destination_station.value,
       time: this.refs.time.value}
 
     axios.post(`http://localhost:3000/v1/commutes`, new_commute ).then(

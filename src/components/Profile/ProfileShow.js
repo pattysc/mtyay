@@ -24,6 +24,8 @@ class ProfileShow extends Component {
         {keys}
         <Link to={'/commute/new'}><button>Add a Commute</button></Link><br/>
         <Link to={'/commute/matches'}><button>Show Matches</button></Link><br/>
+        <Link to={'/connections/requests'}><button>Show Requests</button></Link><br/>
+        <Link to={'/connections'}><button>Show Connections</button></Link><br/>
 
       </div>
     )

@@ -11,11 +11,13 @@
     "lodash": "^4.17.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-dropzone": "^3.10.0",
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
     "redux": "^3.6.0",
     "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "superagent": "^3.4.4"
   },
   "scripts": {
     "start": "PORT=8080 react-scripts start",
