@@ -29,11 +29,11 @@ export default (
     <Route path="signup" component={UserSignUp} />
     <Route path="login" component={UserLogIn} />
 
-      <Route path="profile" component={ProfileApp} onEnter={requireAuth}> {/* we can refactor and put require auth here instead of twice below but i feel bad making you guys pull AGAIN */}
-        <Route path='new' component={ProfileCreate}/>
-        <Route path='picture' component={ProfilePicture}/>
-        <Route path=':id' component={ProfileShow}/>
-      </Route>
+    <Route path="profile" component={ProfileApp} onEnter={requireAuth}>
+      <Route path='new' component={ProfileCreate} />
+      <Route path='picture' component={ProfilePicture} />
+      <Route path=':id' component={ProfileShow} />
+    </Route>
 
     <Route path="commute" component={CommuteApp} onEnter={requireAuth}>
       <IndexRoute component={CommuteDashboard}/>

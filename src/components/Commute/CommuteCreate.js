@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import axios from 'axios'
 import { browserHistory } from 'react-router'
+import  { Button, Dropdown, NavItem } from 'react-materialize'
 
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
 
@@ -51,21 +52,22 @@ class CommuteCreate extends Component {
           <h3> Make a new commute </h3> <br/>
           <p> Commute Name </p>
           <input type="text" ref='nickname' placeholder="Add a nickname"/>
-          <p> Departure time (+- 15 mins) </p>
-          <select ref="time">
-            <option value="07:00">07:00</option>
-            <option value="07:30">07:30</option>
-            <option value="08:00">08:00</option>
-            <option value="08:30">08:30</option>
-            <option value="09:00">09:00</option>
-            <option value="09:30">09:30</option>
-            <option value="17:00">17:00</option>
-            <option value="17:30">17:30</option>
-            <option value="18:00">18:00</option>
-            <option value="18:30">18:30</option>
-            <option value="19:00">19:00</option>
-            <option value="19:30">19:30</option>
-          </select>
+          <Dropdown trigger={
+            <Button >Departure Time</Button>
+          }>
+          <NavItem value="07:00">07:00</NavItem>
+          <NavItem value="07:30">07:30</NavItem>
+          <NavItem value="08:00">08:00</NavItem>
+          <NavItem value="08:30">08:30</NavItem>
+          <NavItem value="09:00">09:00</NavItem>
+          <NavItem value="09:30">09:30</NavItem>
+          <NavItem value="17:00">17:00</NavItem>
+          <NavItem value="17:30">17:30</NavItem>
+          <NavItem value="18:00">18:00</NavItem>
+          <NavItem value="18:30">18:30</NavItem>
+          <NavItem value="19:00">19:00</NavItem>
+          <NavItem value="19:30">19:30</NavItem>
+        </Dropdown>
 
           <p> Origin Line </p>
           <select ref="line" onChange={this.fetchStations.bind(this)}>
