@@ -2,4 +2,15 @@
 
 .nav-wrapper {
   font-family: 'Nunito', sans-serif;
+  background-color: #356283;
+}
+
+#logo {
+  vertical-align: middle;
+  height: 50px;
+  padding-left: 20px;
+}
+
+* {
+  font-family: 'Nunito', sans-serif;
 }

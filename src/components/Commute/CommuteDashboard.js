@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { browserHistory } from 'react-router'
 import {fetchCommutes, fetchCommuteMatches} from '../../actions'
+import { Button } from 'react-materialize'
 
 class CommuteDashboard extends Component {
   componentDidMount(){
@@ -26,7 +27,7 @@ class CommuteDashboard extends Component {
 
     return(
       <div>
-        <br/><button onClick={this.addCommute.bind(this)}>Add a Commute</button><br/><br/>
+        <br/><Button onClick={this.addCommute.bind(this)}>Add a Commute</Button><br/><br/>
         <button  onClick={this.showMatches.bind(this)}>Show All Matches</button><br/>
 
         <h1> Your Commutes </h1>
