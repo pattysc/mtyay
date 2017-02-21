@@ -1,18 +1,5 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-.App-header {
-  background-color: #222;
-  height: 50px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-.Profile {
-  
+.nav-wrapper {
+  font-family: 'Nunito', sans-serif;
 }
