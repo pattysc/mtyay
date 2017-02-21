@@ -44,7 +44,7 @@ export default (
 
     <Route path="connections" component={ConnectionsApp} onEnter={requireAuth}>
       <IndexRoute component={ConnectionsIndex}/>
-      <Route path="requests" component={ConnectionsRequests} />
+      <Route path="requests" component={ConnectionsRequests}/>
     </Route>
 
   </Route>
