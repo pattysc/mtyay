@@ -33,9 +33,9 @@ class CommuteMatches extends Component {
 
     let requester_commute_id = currentUserMatchingCommute.id
     let requestee_commute_id = selectedMatchingCommute.id
-
+    let invite_note = this.refs[`note--${match_commute_id}`].value
     // dispatch the action for hitting API and creating the connection
-    this.props.createConnection({ requester_commute_id, requestee_commute_id})
+    this.props.createConnection({ requester_commute_id, requestee_commute_id, invite_note })
   }
 
   render(){
@@ -48,6 +48,7 @@ class CommuteMatches extends Component {
             return (
             <div key={`div--fullMatchTile-${i}`}>
               < MatchInfoTile commute={match} index={i} />
+              <textarea ref={`note--${match.id}`} placeholder="Write a note to your connection!"></textarea><br/>
               < MatchConnectButton commute={match} handleConnectClick={this.handleConnectClick.bind(this, match.id)} index={i} disabled={false} />
             </div>
             )

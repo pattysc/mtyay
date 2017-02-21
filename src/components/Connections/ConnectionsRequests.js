@@ -48,7 +48,7 @@ class ConnectionsRequests extends Component {
       if(parseInt(sessionStorage.id) === conn.requestee_commute.profile.id){
         return ( <div>
                   <p> Request from: {conn.requester_commute.profile.name} <br/>
-                      "{conn.invite_note}"
+                      Message: "{conn.invite_note}"
                   </p>
                   <OptionButtons id={i} conn={conn} invitationAccepted={this.state.invitationAccepted} invitationDeclined={this.state.invitationDeclined} acceptInvitation={this.acceptInvitation.bind(this, conn.id)} declineInvitation={this.declineInvitation.bind(this, conn.id)}/>
                   <hr/>
@@ -61,7 +61,7 @@ class ConnectionsRequests extends Component {
         return (
           <div>
             <p> Request to: {conn.requestee_commute.profile.name} <br/>
-                      "{conn.invite_note}"
+                      Message: "{conn.invite_note}"
             </p>
             <Link to={`profile/${conn.requestee_commute.profile.id}`}><button> Checkout {conn.requestee_commute.profile.name}'s profile! </button></Link>
             <hr/>
