@@ -57,6 +57,7 @@ export const fetchCommutes = () => {
   const response = axios.get('/commutes').then(function(commuteData){
     return commuteData.data
   })
+
   return {
     type: 'FETCH_COMMUTES',
     payload: response
@@ -65,8 +66,20 @@ export const fetchCommutes = () => {
 
 export const fetchMatches = () => {
   const response = axios.get('/matches').then(function(commuteData){
+    // Add application state for each matching commute
+    // This will be used to track button clicks on match show pages
+    if (commuteData.data.length > 0) {
+      commuteData.data.forEach( (resp) => {
+        resp.button = resp.button || {}
+        resp.button['clicked'] = false
+        resp.button['text'] = 'Invite to Connect'
+      })
+    }
+    console.log('fetchMatches (ALL)')
+    console.log(commuteData.data)
     return commuteData.data
   })
+
   return{
     type: 'FETCH_MATCHES',
     payload: response
@@ -82,6 +95,15 @@ export const fetchCommuteMatches = (id) => {
     }
   }
   const response = axios.get(`/matches/?id=${id}`).then(function(commuteData){
+    if (commuteData.data.length > 0) {
+      commuteData.data.forEach( (resp) => {
+        resp.button = resp.button || {}
+        resp.button['clicked'] = false
+        resp.button['text'] = 'Invite to Connect'
+      })
+    }
+    console.log('fetchCommuteMatches')
+    console.log(commuteData.data)
     return commuteData.data
   })
   return{
@@ -89,6 +111,13 @@ export const fetchCommuteMatches = (id) => {
     payload: response
   }
 }
+export const toggleMatchButton = (clicked_commute) => {
+
+    return {
+      type: 'CLICKED_MATCH_BUTTON',
+      payload: clicked_commute
+    }
+  }
 
 export const createConnection = (connection) => {
   const response = axios.post(`/connections`,
