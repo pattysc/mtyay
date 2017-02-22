@@ -35,6 +35,7 @@ footer.page-footer {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  min-height: 95vh;
 }
 
 html {
@@ -50,7 +51,7 @@ footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 100px;
+    min-height: 100px;
     width: 100%;
     overflow:hidden;
 }

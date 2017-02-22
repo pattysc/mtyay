@@ -36,9 +36,9 @@ export default class OptionButtons extends Component{
     return(
       <div className="Buttons">
         <br/>
-        <Link to={`/profile/${this.props.conn.requester_commute.profile.id}`}><Button id='commute-match-tile-profile' className='btn deep-orange darken-3'>Checkout {this.props.conn.requester_commute.profile.name}'s profile!</Button></Link><br/><br/>
-        <Button className="btn amber darken-4" type="submit" id={this.props.id} onClick={this.acceptInvitation.bind(this, this.props.conn_id)} disabled={this.state.invitationAccepted}>Accept {this.props.conn.requester_commute.profile.name}'s invitation </Button><br/><br/>
-        <Button className="btn amber darken-4" type="submit" id={this.props.id} onClick={this.declineInvitation.bind(this, this.props.conn_id)} disabled={this.state.invitationDeclined}>Decline {this.props.conn.requester_commute.profile.name}'s invitation </Button>
+        <Link to={`/profile/${this.props.conn.requester_commute.profile.id}`}><Button id='commute-match-tile-profile' className='btn amber darken-4'>Checkout {this.props.conn.requester_commute.profile.name}'s profile!</Button></Link><br/><br/>
+        <Button className='btn deep-orange darken-3' type="submit" id={this.props.id} onClick={this.acceptInvitation.bind(this, this.props.conn_id)} disabled={this.state.invitationAccepted}>Accept {this.props.conn.requester_commute.profile.name}'s invitation </Button><br/><br/>
+        <Button className="btn deep-orange darken-3" type="submit" id={this.props.id} onClick={this.declineInvitation.bind(this, this.props.conn_id)} disabled={this.state.invitationDeclined}>Decline {this.props.conn.requester_commute.profile.name}'s invitation </Button>
       </div>
     )
   }
