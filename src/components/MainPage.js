@@ -58,7 +58,7 @@ class MainPage extends Component {
           </Col>
           <Col s={10} m={5} l={5} offset='s1' className='whitebg center'>
             <ul><br/>
-              <li> <h5> <b>💺</b> Add your commutes and discover matches</h5></li><br/>
+              <li> <h5> <b>🚂</b> Add your commutes and discover matches</h5></li><br/>
               <li> <h5> <b>🔎</b> Read profiles and request connections </h5></li><br/>
               <li> <h5> <b>🎉</b> Meet new people & make your commutes awesome! </h5></li><br/>
             </ul>

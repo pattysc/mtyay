@@ -32,14 +32,14 @@ class ProfilePicture extends Component {
   render(){
     return(
       <div>
-        <div>
+        <div className='whitebg'>
           <h2> Upload a profile picture! </h2>
           <Dropzone multiple={false} accept="image/*" onDrop={this.onImageDrop.bind(this)}>
             <p> Drop an image here or click to select a file from your computer! </p>
           </Dropzone>
         </div>
 
-        <div>
+        <div className='whitebg'>
           {this.props.userPicture === '' ? null :
           <div>
             This is the image you uploaded:
