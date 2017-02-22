@@ -41,12 +41,14 @@ class CommuteMatches extends Component {
   render(){
 
     return(
-      <div>
+    <div>
+      <div className='whitebg'>
         <h1> All Your Matches </h1>
+      </div>
           {this.props.matches.map((match, i) => {
           if (!match.button.clicked){
             return (
-            <div key={`div--fullMatchTile-${i}`}>
+            <div className='whitebg' key={`div--fullMatchTile-${i}`}>
               < MatchInfoTile commute={match} index={i} />
               <textarea ref={`note--${match.id}`} placeholder="Write a note to your connection!"></textarea><br/>
               < MatchConnectButton commute={match} handleConnectClick={this.handleConnectClick.bind(this, match.id)} index={i} disabled={false} />
@@ -54,7 +56,7 @@ class CommuteMatches extends Component {
             )
           } else {
             return (
-              <div key={`div--fullMatchTile-${i}`}>
+              <div className='whitebg' key={`div--fullMatchTile-${i}`}>
                 < MatchInfoTile commute={match} index={i} />
                 < MatchConnectButton commute={match} handleConnectClick={this.handleConnectClick.bind(this, match.id)} index={i} disabled={true} />
               </div>

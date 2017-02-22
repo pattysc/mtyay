@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import OptionButtons from './OptionButtons'
-import { CollapsibleItem, Collapsible } from 'react-materialize';
+import { CollapsibleItem, Collapsible, Button } from 'react-materialize';
 
 class ConnectionsRequests extends Component {
 
@@ -31,8 +31,8 @@ class ConnectionsRequests extends Component {
         return (
           <div>
             <CollapsibleItem icon="account_circle" className="grey lighten-4 black-text" header={`To: ${conn.requestee_commute.profile.name}`}>
-              Message: "{conn.invite_note}"  <br/>
-              <Link to={`/profile/${conn.requestee_commute.profile.id}`}><button> Checkout {conn.requestee_commute.profile.name}'s profile! </button></Link>
+              Message: "{conn.invite_note}"  <br/> <br/>
+              <Link to={`/profile/${conn.requestee_commute.profile.id}`}><Button id='commute-match-tile-profile' className='btn deep-orange darken-3'> Checkout {conn.requestee_commute.profile.name}'s profile! </Button></Link>
             </CollapsibleItem>
           </div>
           )
@@ -40,13 +40,13 @@ class ConnectionsRequests extends Component {
     return(
       <div className="requests">
         <div className="requesters">
-          <h4> Other commuters have sent you these requests: </h4>
+          <h4 className="whitebg"> Other commuters have sent you these requests: </h4>
           <Collapsible popout>
             {requesters}
           </Collapsible>
         </div>
         <div className="requestees">
-          <h4> You have sent out these requests: </h4>
+          <h4 className="whitebg"> You have sent out these requests: </h4>
           <Collapsible popout>
             {requestees}
           </Collapsible>

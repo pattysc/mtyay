@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router'
 import './App.css';
-import { Navbar, NavItem } from 'react-materialize';
+import { Navbar, NavItem, Button, Footer } from 'react-materialize';
 
 
 
@@ -23,10 +23,10 @@ class App extends Component {
       buttons = <div><NavItem ><Link onClick={this.handleLogOut.bind(this)}>Log Out</Link></NavItem></div>
     } else {
       buttons = (<div><NavItem ><Link to={`/login`}>Log In</Link></NavItem>
-      <NavItem ><Link to={'/signup'}>Sign Up</Link></NavItem></div>)
+      <NavItem ><Button><Link to={'/signup'}>Sign Up</Link></Button></NavItem></div>)
     }
     return (
-      <div className="App">
+      <div className="App" id='mainbg'>
         <div className="nav-wrapper">
           <Navbar brand={<img className="responsive-img" id="logo" src="/transparent_wide_edit.png"/>} right>
             {buttons}
@@ -35,6 +35,8 @@ class App extends Component {
           <div className="container">
             { this.props.children }
           </div>
+          <Footer copyrights="&copy; 2017 MetroMeetups">
+          </Footer>
       </div>
     );
   }

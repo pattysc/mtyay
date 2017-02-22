@@ -32,7 +32,7 @@ class ConnectionsIndex extends Component {
 
     return(
       <div className="Connections">
-        <h4> These are your connections: </h4>
+        <h4 className="whitebg"> These are your connections: </h4>
         <Collapsible popout>
           {connections}
         </Collapsible>
