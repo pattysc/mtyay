@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createProfile } from '../../actions/index'
+import { patchProfile } from '../../actions/index'
 import { bindActionCreators } from 'redux'
+import {Button} from 'react-materialize'
 
 class ProfileCreate extends Component {
   constructor(){
@@ -22,7 +23,7 @@ class ProfileCreate extends Component {
       goodreads: this.refs.goodreads.value,
       skype: this.refs.skype.value
     }
-    this.props.createProfile(profile)
+    this.props.patchProfile(profile, parseInt(sessionStorage.id))
   }
 
   render(){
@@ -41,7 +42,7 @@ class ProfileCreate extends Component {
           <h3> Info for Connections Only</h3>
             <input type="tel" ref="phone" placeholder="Mobile Number" required/><br/>
             <input type="text" ref="skype" placeholder="Skype Username"/><br/>
-          <button type="submit">Submit</button>
+          <Button className='btn deep-orange darken-3' type="submit">Submit</Button>
         </form>
       </div>
     )
@@ -49,7 +50,7 @@ class ProfileCreate extends Component {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({createProfile}, dispatch)
+  return bindActionCreators({patchProfile}, dispatch)
 }
 
 function mapStateToProps(state){

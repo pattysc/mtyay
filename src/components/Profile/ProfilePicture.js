@@ -5,6 +5,8 @@ import axios from 'axios'
 import { uploadPicture } from '../../actions/index'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import {Link} from 'react-router'
+import {Button} from 'react-materialize'
 // import { Link } from 'react-router'
 // import { fetchProfile } from '../../actions'
 // import _ from 'lodash'
@@ -36,13 +38,15 @@ class ProfilePicture extends Component {
           <h2> Upload a profile picture! </h2>
           <Dropzone multiple={false} accept="image/*" onDrop={this.onImageDrop.bind(this)}>
             <p> Drop an image here or click to select a file from your computer! </p>
-          </Dropzone>
+          </Dropzone> <br/>
+          <Link to={`/commute/new`}><Button className='btn amber darken-4'> Skip for now </Button></Link>
+
         </div>
 
         <div className='whitebg'>
           {this.props.userPicture === '' ? null :
           <div>
-            This is the image you uploaded:
+            This is the image you uploaded: <br/>
             <img src={this.props.userPicture} />
           </div>}
         </div>

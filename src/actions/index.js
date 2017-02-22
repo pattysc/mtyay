@@ -6,6 +6,7 @@ axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
 
 export const createUser = (user) => {
   const response = axios.post('/signup', user).then(function(userData){
+
     sessionStorage.setItem('jwt', userData.data.jwt)
     sessionStorage.setItem('id', userData.data.id)
     axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
@@ -32,14 +33,14 @@ export const setUser = (user) => {
   }
 }
 
-export const createProfile = (profile) => {
-  const response = axios.post('/profiles', profile).then(function(profileData){
-    console.log(profileData)
+export const patchProfile = (profile, id) => {
+  debugger
+  const response = axios.patch(`/profiles/${id}`, profile).then(function(profileData){
     browserHistory.push(`/profile/picture`)
     return profileData.data
   })
   return {
-    type: 'CREATE_PROFILE',
+    type: 'PATCH_PROFILE',
     payload: response
   }
 }
