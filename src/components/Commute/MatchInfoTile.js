@@ -1,5 +1,7 @@
 import React from 'react';
-// import { Link } from 'react-router'
+import { Link } from 'react-router'
+import  { Row, Col, Button } from 'react-materialize'
+
 
 export default function MatchInfoTile(props){
   // props are..
@@ -9,15 +11,28 @@ export default function MatchInfoTile(props){
   // handleConnectClick: the event handler,  bound and with match ID hard-coded
   let match = props.commute
   let index = props.index
-
+  console.log(props.commute)
   if (props.commute) {
     return ( <div key={`div--matchtile-${index}`}>
-      <h3 key={`h3--matchtile-${index}`}> Match name: {match.profile.name} </h3>
-        <p key={`p--matchtile-${index}`}> Bio: {match.profile.bio}<br/>
-        Commute name: {match.nickname} <br/>
-        on line {match.origin.line} at station {match.origin.name} <br/>
-        leaving around {match.time} <br/>
-        They get off at {match.destination.name} </p>
+      <Row>
+      <Col s={12} m={6} l={6}>
+      <h3 key={`h3--matchtile-${index}`}>
+        <Link to={`/profile/${match.profile.id}`}> {match.profile.name}</Link> </h3>
+        <h5 key={`p--matchtile-${index}`}> <b>Bio:</b></h5>{match.profile.bio}<h5>
+        <b>Commute:</b> {match.nickname} <br/>
+        <b>From:</b> {match.origin.name} on the {match.origin.line} train<br/>
+        <b>Departing Around:</b> {match.time} <br/>
+        <b>Destination:</b> {match.destination.name} </h5>
+      </Col>
+      <Col s={12} m={6} l={6} className='center' >
+          <img className='commute-tile' src={match.profile.picture}/>
+          <Link to={`/profile/${match.profile.id}`}>
+            <Button id='commute-match-tile-profile' className='btn amber darken-4'>
+          View Profile</Button>
+          </Link>
+        {/* <div>'photo here'</div> */}
+      </Col>
+      </Row>
     </div> )
   } else {
     return (
