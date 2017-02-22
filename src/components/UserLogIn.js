@@ -20,7 +20,7 @@ class UserLogIn extends Component {
 
   render(){
     return(
-      <div>
+      <div className='whitebg'>
         <form onSubmit={this.handleSubmit}>
           <input ref="email" placeholder="Enter Email" /> <br/>
           <input type="password" ref="userPassword" placeholder="Enter Password" />

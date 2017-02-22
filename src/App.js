@@ -26,7 +26,7 @@ class App extends Component {
       <NavItem ><Button><Link to={'/signup'}>Sign Up</Link></Button></NavItem></div>)
     }
     return (
-      <div className="App">
+      <div className="App" id='mainbg'>
         <div className="nav-wrapper">
           <Navbar brand={<img className="responsive-img" id="logo" src="/transparent_wide_edit.png"/>} right>
             {buttons}
