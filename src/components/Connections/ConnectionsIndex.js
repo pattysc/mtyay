@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import axios from 'axios'
 import OptionButtons from './OptionButtons'
+import { CollapsibleItem, Collapsible } from 'react-materialize';
+
 
 class ConnectionsIndex extends Component {
 
@@ -16,20 +18,24 @@ class ConnectionsIndex extends Component {
     console.log(this.props.connections);
     let connections
     connections = this.props.connections.map( (conn) => {
+      let header = conn.requester_commute.profile.id === parseInt(sessionStorage.id) ?  "you":conn.requester_commute.profile.name
+      let to = conn.requestee_commute.profile.id === parseInt(sessionStorage.id) ?  "you":conn.requestee_commute.profile.name
               return ( <div>
-                  <p> Request from <b> {conn.requester_commute.profile.id === parseInt(sessionStorage.id) ?  "you":conn.requester_commute.profile.name } </b> to <b> {conn.requestee_commute.profile.id === parseInt(sessionStorage.id) ?  "you":conn.requestee_commute.profile.name } </b> <br/>
-                      "{conn.invite_note}" <br/>
-                      You guys can meet at {conn.requester_commute.origin.name} station at {conn.requestee_commute.time}!
-                  </p>
-                  <hr/>
+                <CollapsibleItem icon="account_circle" className="grey lighten-4 black-text" header={`From ${header} to ${to}`}>
+                  Message: "{conn.invite_note}" <br/>
+                  You guys can meet at {conn.requester_commute.origin.name} station at {conn.requestee_commute.time}!
+                  <OptionButtons conn_id={conn.id} conn={conn} />
+                </CollapsibleItem>
                 </div>
               )
       })
 
     return(
       <div className="Connections">
-        <h2> These are your connections: </h2>
-        {connections}
+        <h4> These are your connections: </h4>
+        <Collapsible popout>
+          {connections}
+        </Collapsible>
       </div>
     )
   }
