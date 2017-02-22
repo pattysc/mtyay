@@ -22,7 +22,7 @@ export default function MatchInfoTile(props){
         <b>Commute:</b> {match.nickname} <br/>
         <b>From:</b> {match.origin.name} on the {match.origin.line} train<br/>
         <b>Departing Around:</b> {match.time} <br/>
-        Destination: {match.destination.name} </h5>
+        <b>Destination:</b> {match.destination.name} </h5>
       </Col>
       <Col s={12} m={6} l={6} className='center' >
           <img className='commute-tile' src={match.profile.picture}/>
