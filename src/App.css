@@ -27,3 +27,8 @@
 footer.page-footer {
   background-color: #356283;
 }
+
+.profile-pic {
+  border-radius: 50%;
+  height: 100px;
+}

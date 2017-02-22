@@ -8,7 +8,7 @@ class MainPage extends Component {
     return(
       <div className="Page" id="landing-page">
         <h2> Why ride this train alone when you can go with a *new* connection? MTYAY! </h2> <br/>
-        <h3> Sign up or log in to get started! </h3>
+        <h3> <Link to={'/signup'}>Sign up</Link> or <Link to={'/login'}>log in</Link> to get started! </h3>
       </div>
 
     )
