@@ -51,7 +51,7 @@ class ProfileShow extends Component {
       }
     }).filter(element => element != undefined)
     return(
-      <div className={'white-bg'}>
+      <div className='whitebg' >
         <h3>{this.props.profile.name}'s Profile</h3>
         {keys}
         <Link to={'/commute/new'}><button>Add a Commute</button></Link><br/>

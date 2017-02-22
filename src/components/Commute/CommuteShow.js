@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
 import { bindActionCreators } from 'redux'
 import {fetchMatches, fetchCommuteMatches,
         createConnection, fetchCommutes, setCurrentCommute, toggleMatchButton} from '../../actions'
+import  { Button, Col, Row, Input} from 'react-materialize'
+import { Link } from 'react-router'
+
+
 import MatchConnectButton from './MatchConnectButton'
 import MatchInfoTile from './MatchInfoTile'
 
@@ -13,6 +18,10 @@ class CommuteShow extends Component {
     this.props.fetchCommutes()
     this.props.fetchCommuteMatches(this.props.params.id)
 
+  }
+
+  showMatches(){
+    browserHistory.push('/commute/matches')
   }
 
   handleConnectClick(match_commute_id){
@@ -44,30 +53,40 @@ class CommuteShow extends Component {
     // const rootCommute = this.shownCommute()
     if (Object.keys(this.props.currentCommute).length === 0) {
       return(
-        <div> Loading... ...! </div>
+        <div className='whitebg'> Loading... ...! </div>
         )
     } else if (this.props.matches.length === 0){
-      return (<div>You have no matches :( </div>)
+      return (
+        <div>
+          <div className='whitebg'>
+            <h3> No matches yet for this commute :( </h3>
+          </div>
+          <Row className='whitebg'>
+            <Col s={12} className='center' >
+              <Button className='btn deep-orange darken-3 commute-dash' onClick={this.showMatches.bind(this)}>Show All Matches</Button><br/>
+            </Col>
+          </Row>
+          </div>
+        )
     } else {
       return(
 
       <div>
-        <div className="yourCommute">
-          <h2>This is your commute:</h2>
-            <p>Name: { this.props.currentCommute.profile.name } <br/>
-            Commute name: { this.props.currentCommute.nickname } <br/>
-            at station { this.props.currentCommute.origin.name } <br/>
-            on line { this.props.currentCommute.origin.line } <br/>
-            at {this.props.currentCommute.time} <br/>
-            You get off at {this.props.currentCommute.destination.name} <br/></p><hr/>
+        <div className="yourCommute whitebg">
+          <h2>Your Commute:</h2>
+            <h5><b>Nickname</b>: { this.props.currentCommute.nickname } <br/>
+            <b>From</b>: { this.props.currentCommute.origin.name }&nbsp;on the <b>{ this.props.currentCommute.origin.line }</b> train <br/>
+            <b>Departing Around:</b> {this.props.currentCommute.time} <br/>
+            <b>Destination:</b> {this.props.currentCommute.destination.name} <br/></h5>
+
         </div>
-
-        <h2> These are its matches: </h2>
-
+        <div className='whitebg'>
+          <h2> Commute Matches</h2>
+        </div>
           {this.props.matches.map((match, i) => {
           if (!match.button.clicked){
             return (
-            <div key={`div--fullMatchTile-${i}`}>
+            <div className='whitebg'key={`div--fullMatchTile-${i}`}>
               < MatchInfoTile commute={match} index={i} />
               <textarea ref={`note--${match.id}`} placeholder="Write a note to your connection!"></textarea><br/>
               < MatchConnectButton commute={match} handleConnectClick={this.handleConnectClick.bind(this, match.id)} index={i} disabled={false} />
@@ -75,7 +94,7 @@ class CommuteShow extends Component {
             )
           } else {
             return (
-              <div key={`div--fullMatchTile-${i}`}>
+              <div className='whitebg' key={`div--fullMatchTile-${i}`}>
                 < MatchInfoTile commute={match} index={i} />
                 < MatchConnectButton commute={match} handleConnectClick={this.handleConnectClick.bind(this, match.id)} index={i} disabled={true} />
               </div>

@@ -21,7 +21,7 @@ class UserSignUp extends Component {
 
   render(){
     return(
-      <div>
+      <div className='whitebg'>
         <form onSubmit={this.handleSubmit}>
           <input ref="email" placeholder="Enter Email" />
           <input type="password" ref="userPassword" placeholder="Enter Password" />
