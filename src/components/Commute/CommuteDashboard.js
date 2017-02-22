@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { browserHistory } from 'react-router'
 import {fetchCommutes, fetchCommuteMatches} from '../../actions'
-import { Button, Row } from 'react-materialize'
+import { Button, Row, Col } from 'react-materialize'
 
 class CommuteDashboard extends Component {
   componentDidMount(){
@@ -26,25 +26,30 @@ class CommuteDashboard extends Component {
   render(){
 
     return(
+      <div>
       <div className='whitebg'>
       <Row>
-        <Button s={6} className='btn deep-orange darken-3' onClick={this.addCommute.bind(this)}>Add a Commute</Button>
+        <Col s={6} className='center' >
+          <Button className='btn deep-orange darken-3 commute-dash' onClick={this.addCommute.bind(this)}>Add a Commute</Button>
+        </Col>
+        <Col s={6} className='center' >
+          <Button className='btn deep-orange darken-3 commute-dash' onClick={this.showMatches.bind(this)}>Show All Matches</Button><br/>
+        </Col>
       </Row>
-      <Row>
-        <Button s={6} className='btn deep-orange darken-3' onClick={this.showMatches.bind(this)}>Show All Matches</Button><br/>
-      </Row>
-
-        <h1> Your Commutes </h1>
-
+      </div>
+        <div className='whitebg'>
+          <h1> Your Commutes </h1>
+        </div>
         {this.props.commutes.map( (commute, i) => {
           return (
-          <div>
-          <h3>Nickname:{commute.nickname}</h3>
-            <p>Origin Station: {commute.origin.name}, {commute.origin.line} train <br/>
-            Destination Station: {commute.destination.name}, {commute.origin.line} train<br/>
-            Time: {commute.time}<br/></p>
-          <button value={commute.id} onClick={this.findMatch.bind(this)}>Find A Match</button>
-            <hr/><br/>
+          <div className='whitebg'>
+          <h3><b>{commute.nickname}</b></h3>
+            <h5><b>From:</b> {commute.origin.name} on the {commute.origin.line} train<br/>
+            <b>Departing Around:</b> {commute.time}<br/>
+            <b>Destination Station:</b> {commute.destination.name}<br/></h5>
+
+
+          <Button className='btn amber darken-4' value={commute.id} onClick={this.findMatch.bind(this)}>Find Matches</Button><br/>
           </div>
             )}
         )}
