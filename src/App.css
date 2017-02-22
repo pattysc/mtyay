@@ -67,3 +67,9 @@ footer.page-footer {
   display:block; /* change this from inline-block */
   margin:0 auto; /* this will center  it */
 }
+
+.profile-pic {
+  border-radius: 50%;
+  height: 100px;
+
+}

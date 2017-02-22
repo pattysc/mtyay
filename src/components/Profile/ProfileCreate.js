@@ -14,7 +14,6 @@ class ProfileCreate extends Component {
     const profile = {
       name: this.refs.name.value,
       bio: this.refs.bio.value,
-      photo: this.refs.photo.value,
       phone: this.refs.phone.value,
       twitter: this.refs.twitter.value,
       linkedin: this.refs.linkedin.value,
@@ -33,7 +32,6 @@ class ProfileCreate extends Component {
           <h3> Your Info </h3>
             <input type="text" ref="name" placeholder="Enter Name" /><br/>
             <input type="textarea" ref="bio" placeholder="Your Short Bio" /><br/>
-            <input type="text" ref="photo" placeholder="URL for Profile Photo"/><br/>
             <input type="tel" ref="phone" placeholder="Mobile Number"/><br/>
           <h3>Social Media</h3>
             <input type="text" ref="twitter" placeholder="Twitter Handle"/><br/>
