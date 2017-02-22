@@ -3,56 +3,25 @@ import { fetchRequests } from '../../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import axios from 'axios'
 import OptionButtons from './OptionButtons'
+import { CollapsibleItem, Collapsible, Button } from 'react-materialize';
 
 class ConnectionsRequests extends Component {
-
-  constructor(){
-    super()
-    // this.state = {
-    //   invitationAccepted: false,
-    //   invitationDeclined: false
-    // }
-  }
 
   componentDidMount(){
     this.props.fetchRequests()
   }
 
-  // acceptInvitation(conn_id){
-  //   let params
-  //   params = { id: conn_id, accepted: true}
-  //   axios.patch(`/connections/${conn_id}`, params)
-  //   this.setState({
-  //     invitationAccepted: true,
-  //     invitationDeclined: false
-  //   })
-  // }
-  //
-  // declineInvitation(conn_id){
-  //   let params
-  //   params = { id: conn_id, denied: true}
-  //   axios.patch(`/connections/${conn_id}`, params)
-  //   this.setState({
-  //     invitationAccepted: false,
-  //     invitationDeclined: true
-  //   })
-  // }
-
   render(){
-    console.log(this.props.requests);
     let requesters;
     let requestees;
     requesters = this.props.requests.map( (conn, i) => {
       if(parseInt(sessionStorage.id) === conn.requestee_commute.profile.id){
         return ( <div>
-                  <p> Request from: {conn.requester_commute.profile.name} <br/>
-                      Message: "{conn.invite_note}"
-                  </p>
-                  {/* <OptionButtons id={i} conn={conn} invitationAccepted={this.state.invitationAccepted} invitationDeclined={this.state.invitationDeclined} acceptInvitation={this.acceptInvitation.bind(this, conn.id)} declineInvitation={this.declineInvitation.bind(this, conn.id)}/> */}
-                  <OptionButtons conn_id={conn.id} conn={conn} />
-                  <hr/>
+                  <CollapsibleItem icon="account_circle" className="grey lighten-4 black-text" header={`From: ${conn.requester_commute.profile.name}`}>
+                    Message: "{conn.invite_note}" <br/>
+                    <OptionButtons conn_id={conn.id} conn={conn} />
+                  </CollapsibleItem>
                 </div>
               )
       }})
@@ -61,23 +30,26 @@ class ConnectionsRequests extends Component {
       if(parseInt(sessionStorage.id) === conn.requester_commute.profile.id){
         return (
           <div>
-            <p> Request to: {conn.requestee_commute.profile.name} <br/>
-                      Message: "{conn.invite_note}"
-            </p>
-            <Link to={`/profile/${conn.requestee_commute.profile.id}`}><button> Checkout {conn.requestee_commute.profile.name}'s profile! </button></Link>
-            <hr/>
+            <CollapsibleItem icon="account_circle" className="grey lighten-4 black-text" header={`To: ${conn.requestee_commute.profile.name}`}>
+              Message: "{conn.invite_note}"  <br/> <br/>
+              <Link to={`/profile/${conn.requestee_commute.profile.id}`}><Button id='commute-match-tile-profile' className='btn deep-orange darken-3'> Checkout {conn.requestee_commute.profile.name}'s profile! </Button></Link>
+            </CollapsibleItem>
           </div>
-              )
+          )
       }})
     return(
       <div className="requests">
         <div className="requesters">
-          <h2> Other commuters have sent you these requests: </h2>
-          {requesters}
+          <h4 className="whitebg"> Other commuters have sent you these requests: </h4>
+          <Collapsible popout>
+            {requesters}
+          </Collapsible>
         </div>
         <div className="requestees">
-          <h2> You have sent out these requests: </h2>
-          {requestees}
+          <h4 className="whitebg"> You have sent out these requests: </h4>
+          <Collapsible popout>
+            {requestees}
+          </Collapsible>
         </div>
       </div>
     )

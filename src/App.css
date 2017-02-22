@@ -34,6 +34,25 @@ footer.page-footer {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  min-height: 95vh;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    min-height: 100px;
+    width: 100%;
+    overflow:hidden;
 }
 
 .whitebg {
