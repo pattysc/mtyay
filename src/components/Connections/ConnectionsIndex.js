@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import axios from 'axios'
 import OptionButtons from './OptionButtons'
-import { CollapsibleItem, Collapsible } from 'react-materialize';
+import { CollapsibleItem, Collapsible, Button } from 'react-materialize';
 
 
 class ConnectionsIndex extends Component {
@@ -22,9 +22,9 @@ class ConnectionsIndex extends Component {
       let to = conn.requestee_commute.profile.id === parseInt(sessionStorage.id) ?  "you":conn.requestee_commute.profile.name
               return ( <div>
                 <CollapsibleItem icon="account_circle" className="grey lighten-4 black-text" header={`From ${header} to ${to}`}>
-                  Message: "{conn.invite_note}" <br/>
-                  You guys can meet at {conn.requester_commute.origin.name} station at {conn.requestee_commute.time}!
-                  <OptionButtons conn_id={conn.id} conn={conn} />
+                  <h5>Message: "{conn.invite_note}" </h5>
+                  <p>Check profile for contact info. You guys can meet at {conn.requester_commute.origin.name} station at {conn.requestee_commute.time}!</p>
+                  <Link to={`/profile/${conn.requester_commute.profile.id}`}><Button id='commute-match-tile-profile' className='btn amber darken-4'>Checkout {conn.requester_commute.profile.name}'s profile!</Button></Link><br/><br/>
                 </CollapsibleItem>
                 </div>
               )

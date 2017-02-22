@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createUser } from '../actions/index'
 import { bindActionCreators } from 'redux'
+import { Row, Col } from 'react-materialize'
 
 class UserSignUp extends Component {
   constructor(){
@@ -21,13 +22,20 @@ class UserSignUp extends Component {
 
   render(){
     return(
-      <div className='whitebg'>
-        <form onSubmit={this.handleSubmit}>
-          <input ref="email" placeholder="Enter Email" />
-          <input type="password" ref="userPassword" placeholder="Enter Password" />
-          <input type="password" ref="passwordConfirmation" placeholder="Verify Password" />
-          <button type="submit">Submit</button>
-        </form>
+      <div>    
+        <Row className='whitebg'>
+          <Col s={12} m={12} l={12} >
+            <h3> Sign Up </h3>
+          </Col>
+        </Row>
+        <div className='whitebg'>
+          <form onSubmit={this.handleSubmit}>
+            <input ref="email" placeholder="Enter Email" />
+            <input type="password" ref="userPassword" placeholder="Enter Password" />
+            <input type="password" ref="passwordConfirmation" placeholder="Verify Password" />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
     )
   }

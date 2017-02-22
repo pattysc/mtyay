@@ -35,7 +35,7 @@ export const setUser = (user) => {
 export const createProfile = (profile) => {
   const response = axios.post('/profiles', profile).then(function(profileData){
     console.log(profileData)
-    browserHistory.push(`/profile/${profileData.data.id}`)
+    browserHistory.push(`/profile/picture`)
     return profileData.data
   })
   return {

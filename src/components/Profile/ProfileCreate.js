@@ -27,18 +27,19 @@ class ProfileCreate extends Component {
 
   render(){
     return(
-      <div>
+      <div className='whitebg'>
         <form onSubmit={this.handleSubmit}>
-          <h3> Your Info </h3>
-            <input type="text" ref="name" placeholder="Enter Name" /><br/>
-            <input type="textarea" ref="bio" placeholder="Your Short Bio" /><br/>
-            <input type="tel" ref="phone" placeholder="Mobile Number"/><br/>
-          <h3>Social Media</h3>
+          <h3> Your Public Info </h3>
+            <input type="text" ref="name" placeholder="Enter Name " required/><br/>
+            <input type="text" ref="bio" placeholder="Your Short Bio" required/><br/>
+          <h4>Social Media</h4>
             <input type="text" ref="twitter" placeholder="Twitter Handle"/><br/>
             <input type="text" ref="linkedin" placeholder="LinkedIn Profile"/><br/>
             <input type="text" ref="facebook" placeholder="Facebook Username"/><br/>
             <input type="text" ref="instagram" placeholder="Instagram Username"/><br/>
             <input type="text" ref="goodreads" placeholder="Goodreads Name"/><br/>
+          <h3> Info for Connections Only</h3>
+            <input type="tel" ref="phone" placeholder="Mobile Number" required/><br/>
             <input type="text" ref="skype" placeholder="Skype Username"/><br/>
           <button type="submit">Submit</button>
         </form>

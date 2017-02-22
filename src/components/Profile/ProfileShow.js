@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { fetchProfile } from '../../actions'
 import _ from 'lodash'
+import { Button } from 'react-materialize'
 
 class ProfileShow extends Component {
   constructor(props){
@@ -19,7 +20,8 @@ class ProfileShow extends Component {
           case 'id':
             break
           case 'commutes':
-            return <Link to={`/commute`}><button>Show Commutes</button><br/></Link>
+          return undefined
+            // return <Link to={`/commute`}><button>Show Commutes</button><br/></Link>
           case 'picture':
             return <div><img className={'profile-pic'} src={profile[profileKey]} /><br/></div>
           case 'socialMedia':
@@ -46,7 +48,7 @@ class ProfileShow extends Component {
               }
             }).filter(element => element != undefined)
           default:
-            return <p>{_.capitalize(profileKey)}: {profile[profileKey]}</p>
+            return <h5><b>{_.capitalize(profileKey)}:</b> {profile[profileKey]}</h5>
         }
       }
     }).filter(element => element != undefined)
@@ -54,10 +56,10 @@ class ProfileShow extends Component {
       <div className='whitebg' >
         <h3>{this.props.profile.name}'s Profile</h3>
         {keys}
-        <Link to={'/commute/new'}><button>Add a Commute</button></Link><br/>
-        <Link to={'/commute/matches'}><button>Show Matches</button></Link><br/>
+        <Link to={'/commute/new'}><Button className="btn deep-orange darken-3">Add a Commute</Button></Link><br/>
+        {/* <Link to={'/commute/matches'}><button>Show Matches</button></Link><br/>
         <Link to={'/connections/requests'}><button>Show Requests</button></Link><br/>
-        <Link to={'/connections'}><button>Show Connections</button></Link><br/>
+        <Link to={'/connections'}><button>Show Connections</button></Link><br/> */}
 
       </div>
     )
