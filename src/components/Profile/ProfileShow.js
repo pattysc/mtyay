@@ -33,12 +33,7 @@ class ProfileShow extends Component {
       }
     }).filter(element => element != undefined)
     return(
-      <div >
-        {/* <Card className='medium'
-        header={<CardTitle >{this.props.profile.name}</CardTitle>}
-        actions={[<a href='#'>This is a Link</a>]}>
-        I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.
-        </Card> */}
+      <div className='whitebg' >
         <h3>{this.props.profile.name}'s Profile</h3>
         {keys}
         <Link to={'/commute/new'}><button>Add a Commute</button></Link><br/>

@@ -28,7 +28,6 @@ footer.page-footer {
   background-color: #356283;
 }
 
-
 #mainbg {
   background: url('/daniel-roizer-46779.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -66,18 +65,30 @@ footer {
   margin-bottom:15px;
 }
 
+.homepage {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 20px;
+}
+
 #commute-match-tile-profile {
   display: table-cell;
  vertical-align: bottom;
 }
 
 .commute-tile {
-  padding-top: 15px;
-  padding-bottom:10px;
+  margin-top: 10px;
+  margin-bottom:10px;
   max-height: 200px
+}
+
+#commute-dash {
+  display:block; /* change this from inline-block */
+  margin:0 auto; /* this will center  it */
 }
 
 .profile-pic {
   border-radius: 50%;
   height: 100px;
+
 }

@@ -68,23 +68,6 @@ class CommuteMatches extends Component {
     )
   }
 }
-    // Old, non-compartmentalized render
-            // let clicked = match.clicked
-            // return ( <div key={`div-${i}`}>
-            //   <h3 key={`h3-${i}`}> Match name: {match.profile.name} </h3>
-            //     <p key={`p-${i}`}> Bio: {match.profile.bio}<br/>
-            //     Commute name: {match.nickname} <br/>
-            //     on line {match.origin.line} at station {match.origin.name} <br/>
-            //     leaving around {match.time} <br/>
-            //     They get off at {match.destination.name} </p>
-            //
-            //     <div>
-            //       <button style={buttonStyle(match.button.disabled)} key={`i`}
-            //       onClick={this.handleConnectClick.bind(this, match.id)}> {match.button.text} </button>
-            //     </div>
-            //   <hr/>
-            // </div> )
-
 
 
 function mapDispatchToProps (dispatch) {

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
 import { bindActionCreators } from 'redux'
 import {fetchMatches, fetchCommuteMatches,
         createConnection, fetchCommutes, setCurrentCommute, toggleMatchButton} from '../../actions'
-import  { Row, Input} from 'react-materialize'
+import  { Button, Col, Row, Input} from 'react-materialize'
 import { Link } from 'react-router'
 
 
@@ -17,6 +18,10 @@ class CommuteShow extends Component {
     this.props.fetchCommutes()
     this.props.fetchCommuteMatches(this.props.params.id)
 
+  }
+
+  showMatches(){
+    browserHistory.push('/commute/matches')
   }
 
   handleConnectClick(match_commute_id){
@@ -51,7 +56,18 @@ class CommuteShow extends Component {
         <div className='whitebg'> Loading... ...! </div>
         )
     } else if (this.props.matches.length === 0){
-      return (<div className='whitebg'>You have no matches :( </div>)
+      return (
+        <div>
+          <div className='whitebg'>
+            <h3> No matches yet for this commute :( </h3>
+          </div>
+          <Row className='whitebg'>
+            <Col s={12} className='center' >
+              <Button className='btn deep-orange darken-3 commute-dash' onClick={this.showMatches.bind(this)}>Show All Matches</Button><br/>
+            </Col>
+          </Row>
+          </div>
+        )
     } else {
       return(
 

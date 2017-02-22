@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router'
-import  { Button, Row } from 'react-materialize'
+import  { Button, Row, Col } from 'react-materialize'
 
 export default function MatchConnectButton(props){
 // props are..
@@ -15,8 +15,10 @@ let index = props.index
   return (
     <div className="matchConnectButton" key={`div--matchButton-${index}`}>
           <Row>
+            <Col s={12} className='center'>
             <Button className="matchConnectButton btn deep-orange darken-3" key={`button--matchButton-${index}`}
             onClick={props.handleConnectClick} disabled={props.disabled}> {match.button.text} </Button>
+            </Col>
           </Row>
 
     </div> )
