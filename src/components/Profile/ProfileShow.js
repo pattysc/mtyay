@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import { fetchProfile } from '../../actions'
 import _ from 'lodash'
 import { Button } from 'react-materialize'
@@ -56,11 +56,7 @@ class ProfileShow extends Component {
       <div className='whitebg' >
         <h3>{this.props.profile.name}'s Profile</h3>
         {keys}
-        <Link to={'/commute/new'}><Button className="btn deep-orange darken-3">Add a Commute</Button></Link><br/>
-        {/* <Link to={'/commute/matches'}><button>Show Matches</button></Link><br/>
-        <Link to={'/connections/requests'}><button>Show Requests</button></Link><br/>
-        <Link to={'/connections'}><button>Show Connections</button></Link><br/> */}
-
+          <Button className="btn amber darken-4" onClick={browserHistory.goBack}>Go Back</Button>
       </div>
     )
   }

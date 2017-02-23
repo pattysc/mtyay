@@ -25,9 +25,9 @@ export default function MatchInfoTile(props){
         <b>Destination:</b> {match.destination.name} </h5>
       </Col>
       <Col s={12} m={6} l={6} className='center' >
-          <img className='commute-tile' src={match.profile.picture}/>
+          <img className='commute-tile-image commute-match-tile-profile' src={match.profile.picture}/>
           <Link to={`/profile/${match.profile.id}`}>
-            <Button id='commute-match-tile-profile' className='btn amber darken-4'>
+            <Button className='btn amber darken-4 commute-match-tile-profile'>
           View Profile</Button>
           </Link>
         {/* <div>'photo here'</div> */}

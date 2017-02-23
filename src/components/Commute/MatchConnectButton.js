@@ -13,10 +13,10 @@ let match = props.commute
 let index = props.index
 
   return (
-    <div className="matchConnectButton" key={`div--matchButton-${index}`}>
+    <div key={`div--matchButton-${index}`}>
           <Row>
             <Col s={12} className='center'>
-            <Button className="matchConnectButton btn deep-orange darken-3" key={`button--matchButton-${index}`}
+            <Button className="btn deep-orange darken-3" key={`button--matchButton-${index}`}
             onClick={props.handleConnectClick} disabled={props.disabled}> {match.button.text} </Button>
             </Col>
           </Row>
