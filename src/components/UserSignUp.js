@@ -2,16 +2,22 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createUser } from '../actions/index'
 import { bindActionCreators } from 'redux'
-import { Row, Col } from 'react-materialize'
+import { Row, Col, Preloader } from 'react-materialize'
 
 class UserSignUp extends Component {
   constructor(){
     super()
+    this.state = {
+      loading: false
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(event){
     event.preventDefault()
+    this.setState({
+      loading: true
+    })
     const user = {
       email: this.refs.email.value,
       password: this.refs.userPassword.value,
@@ -21,8 +27,9 @@ class UserSignUp extends Component {
   }
 
   render(){
+    var wheel = this.state.loading === true ? <Preloader size='small'/>:null
     return(
-      <div>    
+      <div>
         <Row className='whitebg'>
           <Col s={12} m={12} l={12} >
             <h3> Sign Up </h3>
@@ -35,6 +42,7 @@ class UserSignUp extends Component {
             <input type="password" ref="passwordConfirmation" placeholder="Verify Password" />
             <button type="submit">Submit</button>
           </form>
+          {wheel}
         </div>
       </div>
     )

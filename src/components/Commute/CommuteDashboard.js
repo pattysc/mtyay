@@ -24,7 +24,7 @@ class CommuteDashboard extends Component {
   }
 
   render(){
-
+    console.log(this.props.commutes);
     return(
       <div>
       <div className='whitebg'>
