@@ -25,7 +25,7 @@ class CommuteCreate extends Component {
       time: this.refs.time.state.value}
       console.log(new_commute)
 
-    axios.post(`https://metromeets-api.herokuapp.com//v1/commutes`, new_commute ).then(
+    axios.post(`https://metromeets-api.herokuapp.com/v1/commutes`, new_commute ).then(
       (response) => {
         // Add a "flash message" here that invites user to
         // create another commute OR skip ahead to see matches :)
