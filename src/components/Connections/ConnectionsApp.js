@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { browserHistory } from 'react-router'
-import { Link } from 'react-router'
 
 class ConnectionsApp extends Component {
 

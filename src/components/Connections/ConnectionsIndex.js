@@ -3,8 +3,7 @@ import { fetchConnections } from '../../actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import axios from 'axios'
-import OptionButtons from './OptionButtons'
+// import OptionButtons from './OptionButtons'
 import { CollapsibleItem, Collapsible, Button } from 'react-materialize';
 
 

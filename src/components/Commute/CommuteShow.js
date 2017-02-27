@@ -4,8 +4,8 @@ import { browserHistory } from 'react-router'
 import { bindActionCreators } from 'redux'
 import {fetchMatches, fetchCommuteMatches,
         createConnection, fetchCommutes, setCurrentCommute, toggleMatchButton} from '../../actions'
-import  { Button, Col, Row, Input} from 'react-materialize'
-import { Link } from 'react-router'
+import  { Button, Col, Row } from 'react-materialize'
+// import { Link } from 'react-router'
 
 
 import MatchConnectButton from './MatchConnectButton'
