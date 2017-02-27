@@ -27,7 +27,7 @@ class CommuteCreate extends Component {
       time: this.state.time}
       console.log(new_commute);
 
-    axios.post(`https://metromeets-api/v1/commutes`, new_commute ).then(
+    axios.post(`https://metromeet.herokuapp.com/v1/commutes`, new_commute ).then(
       (response) => {
         // Add a "flash message" here that invites user to
         // create another commute OR skip ahead to see matches :)
@@ -43,7 +43,7 @@ class CommuteCreate extends Component {
   }
 
   fetchStations(event){
-    axios.get(`https://metromeets-api/v1/stations/?line=${event.target.value}`).then(
+    axios.get(`https://metromeet.herokuapp.com/v1/stations/?line=${event.target.value}`).then(
       (response) => { this.setState({stations: response.data}) }
     )
   }
