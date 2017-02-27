@@ -71,15 +71,11 @@ footer {
   padding-left: 20px;
 }
 
-#commute-match-tile-profile {
-  display: table-cell;
- vertical-align: bottom;
-}
-
-.commute-tile {
+.commute-tile-image {
   margin-top: 10px;
   margin-bottom:10px;
-  max-height: 200px
+  max-height: 200px;
+  display: block;
 }
 
 #commute-dash {
@@ -90,5 +86,12 @@ footer {
 .profile-pic {
   border-radius: 50%;
   height: 100px;
+}
 
+.commute-match-tile-profile {
+ display: table-cell;
+ vertical-align: bottom;
+ margin: 0 auto;
+ margin-bottom:5px;
+ margin-top: 20px;
 }

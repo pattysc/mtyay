@@ -35,7 +35,6 @@ export const setUser = (user) => {
 }
 
 export const patchProfile = (profile, id) => {
-  debugger
   const response = axios.patch(`/profiles/${id}`, profile).then(function(profileData){
     browserHistory.push(`/profile/picture`)
     return profileData.data
