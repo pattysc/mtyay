@@ -17,6 +17,11 @@ class App extends Component {
     browserHistory.push('/')
   }
 
+  handleLogoClick(e){
+    e.preventDefault()
+    browserHistory.push('/commute/matches')
+  }
+
   render() {
     let buttons = ''
     if (this.loggedIn()){
@@ -36,7 +41,7 @@ class App extends Component {
     return (
       <div className="App" id='mainbg'>
         <div className="nav-wrapper">
-          <Navbar href={`/commute/matches`} brand={<img className="responsive-img" id="logo" src="/transparent_wide_edit.png"/>} right>
+          <Navbar onClick={this.handleLogoClick.bind(this)} brand={<img className="responsive-img" id="logo" src="/transparent_wide_edit.png"/>} right>
             {buttons}
           </Navbar>
         </div>
