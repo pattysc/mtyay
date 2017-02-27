@@ -2,6 +2,7 @@ import axios from 'axios'
 import { browserHistory } from 'react-router'
 
 axios.defaults.baseURL = 'http://localhost:3000/v1'
+axios.defaults.baseURL = 'https://metromeets-api.herokuapp.com/v1'
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
 
 export const createUser = (user) => {
