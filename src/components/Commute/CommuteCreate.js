@@ -41,7 +41,7 @@ class CommuteCreate extends Component {
   }
 
   fetchStations(event){
-    axios.get(`https://metromeet.herokuapp.com/v1/stations/?line=${event.target.value}`).then(
+    axios.get(`https://metromeets-api.herokuapp.com/v1/stations/?line=${event.target.value}`).then(
       (response) => { this.setState({stations: response.data}) }
     )
   }
