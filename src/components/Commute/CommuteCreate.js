@@ -25,7 +25,7 @@ class CommuteCreate extends Component {
       time: this.refs.time.state.value}
       console.log(new_commute)
 
-    axios.post(`http://metromeet.herokuapp.com//v1/commutes`, new_commute ).then(
+    axios.post(`http://localhost:3000/v1/commutes`, new_commute ).then(
       (response) => {
         // Add a "flash message" here that invites user to
         // create another commute OR skip ahead to see matches :)
@@ -41,7 +41,7 @@ class CommuteCreate extends Component {
   }
 
   fetchStations(event){
-    axios.get(`http://localhost:3000/v1/stations/?line=${event.target.value}`).then(
+    axios.get(`https://metromeet.herokuapp.com/v1/stations/?line=${event.target.value}`).then(
       (response) => { this.setState({stations: response.data}) }
     )
   }
@@ -57,7 +57,7 @@ class CommuteCreate extends Component {
             <Input s={8} label='Commute Name' type="text" ref='nickname' placeholder="Add a public nickname"><Icon>stars</Icon></Input>
           </Row>
           <Row>
-            <Input value={this.state.time} s={12} ref='time' type='select' label="Departure Time (+/- 15 minutes)" onChange={} defaultValue='07:00'>
+            <Input value={this.state} s={12} ref='time' type='select' label="Departure Time (+/- 15 minutes)" defaultValue='07:00'>
               <option value="07:00">07:00</option>
               <option value="07:30">07:30</option>
               <option value="08:00">08:00</option>
