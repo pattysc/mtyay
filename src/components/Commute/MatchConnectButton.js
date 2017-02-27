@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router'
 import  { Button, Row, Col } from 'react-materialize'
 
 export default function MatchConnectButton(props){

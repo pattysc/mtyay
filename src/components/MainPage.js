@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
 import { Button, Row, Col } from 'react-materialize'
 import { setUser, createUser } from '../actions/index'
 import { bindActionCreators } from 'redux'
