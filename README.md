@@ -39,33 +39,32 @@ Or if you sign up and your commute doesn't have any matches yet, add this one to
 ## Technical Details (Front-end)
 
 **Dependencies**
-    "axios": "^0.15.3",
-    "elemental": "^0.6.1",
-    "lodash": "^4.17.4",
-    "react": "^15.4.2",
-    "react-addons-css-transition-group": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-dropzone": "^3.10.0",
-    "react-materialize": "^0.18.1",
-    "react-redux": "^5.0.2",
-    "react-router": "^3.0.2",
-    "redux": "^3.6.0",
-    "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.2.0",
-    "superagent": "^3.4.4"
+* "axios": "^0.15.3",
+* "elemental": "^0.6.1",
+* "lodash": "^4.17.4",
+* "react": "^15.4.2",
+* "react-addons-css-transition-group": "^15.4.2",
+* "react-dom": "^15.4.2",
+* "react-dropzone": "^3.10.0",
+* "react-materialize": "^0.18.1",
+* "react-redux": "^5.0.2",
+* "react-router": "^3.0.2",
+* "redux": "^3.6.0",
+* "redux-promise": "^0.5.3",
+* "redux-thunk": "^2.2.0",
+* "superagent": "^3.4.4"
     
 
 ## Technical Details (Back-end)
 
 **Dependencies**
-gem 'rails', '~> 5.0.1'
-gem 'rack-cors'
-gem 'active_model_serializers'
-gem 'pg'
-gem 'jwt'
-gem 'bcrypt', '~> 3.1.7'
-gem 'puma', '~> 3.0'
-
+* gem 'rails', '~> 5.0.1'
+* gem 'rack-cors'
+* gem 'active_model_serializers'
+* gem 'pg'
+* gem 'jwt'
+* gem 'bcrypt', '~> 3.1.7'
+* gem 'puma', '~> 3.0'
 
 ## Product Roadmap
 
