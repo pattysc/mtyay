@@ -21,11 +21,13 @@ matches to connect and form new relationships while you commute. That's why we c
 * Uses a PostgreSQL database
 
 **Functionality** 
+
 Meet Amit. Amit is new New Yorker who takes the 1 train from 238th Street downtown every day around 9:30am. Amit is an outgoing guy and wants to meet people from his neighborhood who share similar interests — he likes Harry Potter, beer and card games.
 
 When Amit hears about MetroMeets, he signs up and adds his morning commute details to see who else shares his commute. He discovers several people who take the 1 train downtown from his station around the same time that he does. He sends a connection request to Dave because he mentions Harry Potter AND Phase 10 in his bio. After Dave accepts his request, they are able to see contact information and arrange a time to commute together. Amit and Dave hit it off on their shared commute and start meeting up regularly for a card game night -- and enjoy chatting whenever they run into each other on the train. #MetroMeets!
 
 **Quickstart**
+
 Want to try out MetroMeets before you sign up? Login with our demo account:
 * Go to www.metromeets.co
 * Login with demo@metromeets.co / metrodemo
@@ -66,6 +68,7 @@ gem 'puma', '~> 3.0'
 
 
 ## Product Roadmap
+
 * Add "fuzzy search" to include matches from commuters at earlier/later departure times and nearby stations
 * Create messaging feature so users don't need to reveal contact information to strangers until they've chatted a bit
 * Allow users to add interests and purposes (ex: networking, new friends, language practice) and sort their matches based on compatability
